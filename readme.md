@@ -31,3 +31,17 @@ left to right-
 3: featured
 4: day/night mode
 5: categories
+
+#### Icons
+
+User <ion-icon name="chevron-forward-outline"></ion-icon>
+Key <ion-icon name="key-outline"></ion-icon>
+Chevron left <ion-icon name="chevron-back-outline"></ion-icon>
+Searchicon <ion-icon name="key-outline"></ion-icon>
+albums <ion-icon name="disc-outline"></ion-icon>
+playlist <ion-icon name="disc-outline"></ion-icon>
+featured <ion-icon name="disc-outline"></ion-icon>
+light/dark <ion-icon name="disc-outline"></ion-icon>
+categories <ion-icon name="list-outline"></ion-icon>
+chevron right <ion-icon name="chevron-forward-outline"></ion-icon>
+https://www.npmjs.com/package/react-ionicons
