@@ -8,3 +8,6 @@ npm run dev - to run site
 CamelCase
 Tailwind
 Components, modules, pages - reusable, dynamic
+Implicit code, if impossible, comments
+Proper var/func names
+Proper commit names, commits should be about one thing at a time
