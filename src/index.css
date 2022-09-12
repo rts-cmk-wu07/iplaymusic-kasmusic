@@ -24,3 +24,7 @@
   src: url("../public/fonts/Poppins-ExtraLight.ttf");
   font-weight: 200;
 }
+body {
+  max-width: 425px;
+  margin: 0 auto;
+}
