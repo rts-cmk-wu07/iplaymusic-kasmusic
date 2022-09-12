@@ -3,7 +3,7 @@ const Album = (props) => {
     <div className={props.css}>
       <img
         src={props.src}
-        className="col-start-1 row-start-1 col-end-2 row-end-2"
+        className="col-start-1 row-start-1 col-end-2 row-end-2 rounded-md"
       />
       {props.children}
     </div>
