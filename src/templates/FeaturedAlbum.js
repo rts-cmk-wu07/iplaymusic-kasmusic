@@ -2,7 +2,7 @@ import Album from "../components/Album";
 
 const FeaturedAlbum = () => {
   const styles = {
-    featuredAlbum: "grid drop-shadow",
+    featuredAlbum: "grid drop-shadow ml-[25px] mr-[25px]",
   };
   return (
     <div>
