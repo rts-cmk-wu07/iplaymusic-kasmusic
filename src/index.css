@@ -26,5 +26,19 @@
 }
 body {
   max-width: 425px;
-  margin: 0 auto;
+  margin: 0;
+}
+.GRADIENTTEST {
+  /* background: rgb(238, 9, 121);
+  background: linear-gradient(
+    270deg,
+    rgba(238, 9, 121, 1) 0%,
+    rgba(255, 106, 0, 1) 100%
+  ); */
+  color: transparent;
+  -webkit-background-clip: text;
+  --tw-gradient-to: #ff6a00;
+  --tw-gradient-from: #ee0979;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
 }
