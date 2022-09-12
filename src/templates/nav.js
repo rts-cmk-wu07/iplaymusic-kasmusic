@@ -9,7 +9,7 @@ import {
 const Nav = () => {
   return (
     <>
-      <nav className="flex place-content-around items-center py-2 fixed bottom-0 w-full max-w-[425px]">
+      <nav className="flex place-content-around items-center py-2 fixed bottom-0 w-full max-w-[425px] bg-white shadow-inner z-10">
         <AlbumsOutline
           cssClasses="GRADIENTTEST"
           color={"#000000"}

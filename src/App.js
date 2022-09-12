@@ -9,6 +9,8 @@ function App() {
       <Nav />
       <TopMenu />
       <Featured />
+      <Featured />
+      <Featured />
     </div>
   );
 }
