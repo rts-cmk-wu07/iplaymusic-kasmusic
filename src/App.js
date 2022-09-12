@@ -1,6 +1,7 @@
 import "./App.css";
 import Nav from "./templates/Nav";
 import TopMenu from "./templates/TopMenu";
+import Albums from "./views/Albums";
 import Featured from "./views/Featured";
 
 function App() {
@@ -9,8 +10,7 @@ function App() {
       <Nav />
       <TopMenu />
       <Featured />
-      <Featured />
-      <Featured />
+      <Albums />
     </div>
   );
 }
