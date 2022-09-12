@@ -1,4 +1,5 @@
 import Album from "../components/Album";
+import ViewAll from "../components/ViewAll";
 
 const NewReleases = () => {
   const tempAlbums = [
@@ -15,7 +16,7 @@ const NewReleases = () => {
     <section className="m-2">
       <div className="flex place-content-between mx-5 mb-4">
         <h2>New Releases</h2>
-        <p>View All</p>
+        <ViewAll />
       </div>
       {tempAlbums.map((album) => {
         return (
