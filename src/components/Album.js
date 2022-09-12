@@ -1,7 +1,10 @@
 const Album = (props) => {
   return (
-    <div>
-      <img src={props.src} />
+    <div className={props.css}>
+      <img
+        src={props.src}
+        className="col-start-1 row-start-1 col-end-2 row-end-2"
+      />
       {props.children}
     </div>
   );
