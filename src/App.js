@@ -1,12 +1,12 @@
 import "./App.css";
-import FeaturedAlbum from "./templates/FeaturedAlbum";
 import Nav from "./templates/nav";
+import Featured from "./views/Featured";
 
 function App() {
   return (
     <div className="App">
       <Nav />
-      <FeaturedAlbum />
+      <Featured />
     </div>
   );
 }
