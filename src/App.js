@@ -1,5 +1,5 @@
 import "./App.css";
-import Nav from "./module/nav";
+import Nav from "./templates/nav";
 
 function App() {
   return (
