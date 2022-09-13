@@ -11,7 +11,7 @@ const PlaylistCarousel = () => {
     speed: 500,
     centerMode: true,
     slidesToShow: 1,
-    centerPadding: "55px",
+
     slidesToScroll: 1,
     variableWidth: true,
     cssEase: "ease-in",
@@ -27,6 +27,11 @@ const PlaylistCarousel = () => {
         <div className="ml-6 mr-6">
           <Album
             src={"./images/playlistcarousel/pexels-photo-949274.png"}
+          ></Album>
+        </div>
+        <div className="ml-6 mr-6">
+          <Album
+            src={"./images/playlistcarousel/photo-1545224144-b38cd309ef69.png"}
           ></Album>
         </div>
         <div className="ml-6 mr-6">
