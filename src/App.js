@@ -1,6 +1,6 @@
 import "./App.css";
 import PlaylistCarousel from "./components/PlaylistCarousel";
-import Nav from "./templates/Nav";
+import Nav from "./templates/Navnav";
 import TopMenu from "./templates/TopMenu";
 import Albums from "./views/Albums";
 import Featured from "./views/Featured";
@@ -11,7 +11,7 @@ function App() {
       <Nav />
       <TopMenu />
       <Featured />
- Playlists-carousel
+      Playlists-carousel
       <PlaylistCarousel />
       <Albums />
     </div>
