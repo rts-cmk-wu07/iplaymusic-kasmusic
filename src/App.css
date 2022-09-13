@@ -1,0 +1,15 @@
+.slick-slide img {
+  transform: scale(0.8);
+  -webkit-transform: scale(0.8);
+  -moz-transform: scale(0.8);
+  transition: 1s;
+}
+.slick-slide {
+  padding: 10px !important;
+}
+.slick-active img {
+  transform: scale(1.25);
+  -webkit-transform: scale(1.25);
+  -moz-transform: scale(1.25);
+  transition: 1s;
+}
