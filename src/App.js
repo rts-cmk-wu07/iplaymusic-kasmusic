@@ -1,19 +1,19 @@
 import "./App.css";
-import PlaylistCarousel from "./components/PlaylistCarousel";
 import Nav from "./templates/Nav";
 import TopMenu from "./templates/TopMenu";
 import Albums from "./views/Albums";
 import Featured from "./views/Featured";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
       <Nav />
       <TopMenu />
-      <Featured />
- Playlists-carousel
-      <PlaylistCarousel />
-      <Albums />
+      <Routes>
+        <Route path="/featured" element={<Featured />} />
+        <Route path="/albums" element={<Albums />} />
+      </Routes>
     </div>
   );
 }
