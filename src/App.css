@@ -2,7 +2,7 @@
   transform: scale(0.8);
   -webkit-transform: scale(0.8);
   -moz-transform: scale(0.8);
-  transition: 1s;
+  transition: 0.5s;
 }
 .slick-slide {
   padding: 10px !important;
@@ -11,5 +11,5 @@
   transform: scale(1.25);
   -webkit-transform: scale(1.25);
   -moz-transform: scale(1.25);
-  transition: 1s;
+  transition: 0.5s;
 }
