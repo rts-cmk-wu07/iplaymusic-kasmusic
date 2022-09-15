@@ -20,9 +20,7 @@ const CategoryContainer = ({ color, children }) => {
       >
         {children}
         <motion.div
-          variants={({ open: { rotate: 180 } }, { close: { rotate: 0 } })}
-          initial="hidden"
-          animate={showHide ? "open" : "close"}
+          animate={{ transform: showHide ? 0 : 180 }}
           transition={{
             duration: 0.5,
           }}
@@ -32,8 +30,7 @@ const CategoryContainer = ({ color, children }) => {
       </section>
       <motion.section
         className="mx-6"
-        variants={({ show: { scale: 100 } }, { hidden: { scale: 0 } })}
-        initial="hidden"
+        variants={({ show: { scaleY: 100 } }, { hidden: { scaleY: 0 } })}
         animate={showHide ? "show" : "hidden"}
         transition={{
           duration: 0.5,
