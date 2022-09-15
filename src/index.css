@@ -26,7 +26,7 @@
 }
 body {
   max-width: 425px;
-  margin: 0;
+  margin: 0 auto;
 }
 .GRADIENTTEST {
   /* background: rgb(238, 9, 121);
