@@ -18,6 +18,7 @@ const Album = () => {
               <p>Genre hashtags</p>
               <div className="flex">
                 <Hashtag text="country" />
+                <Hashtag text="awesome" />
               </div>
             </div>
           </div>
