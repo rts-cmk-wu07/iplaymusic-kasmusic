@@ -12,7 +12,7 @@ function App() {
       <Nav />
       <TopMenu />
       <Routes>
-        <Route path="/featured" element={<Featured />} />
+        <Route path="/" element={<Featured />} />
         <Route path="/albums" element={<Albums />} />
         <Route path="/album" element={<Album />} />
       </Routes>
