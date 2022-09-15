@@ -21,7 +21,7 @@ Categories - liste alle kategorier (page 21)
 Playlists - listes tracks fra en valgt playliste (page 19)
 Player - "Afspil" et valgt track (page 12)
 Login - (page 3)
-Nav - (all pages)
+Design DONE- Nav - (all pages)
 
 #### navigation
 
