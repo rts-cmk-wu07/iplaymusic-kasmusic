@@ -20,7 +20,7 @@ const CategoryContainer = ({ color, children }) => {
       >
         {children}
         <motion.div
-          animate={{ transform: showHide ? 0 : 180 }}
+          animate={{ rotate: showHide ? 0 : 180 }}
           transition={{
             duration: 0.5,
           }}
