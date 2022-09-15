@@ -17,9 +17,9 @@ const NewReleases = () => {
     { name: "w89jhytri", artist: "ij m4398+HN", songs: 45 },
   ];
   return (
-    <section className="m-2">
+    <section className="m-2 mt-8">
       <div className="flex place-content-between mx-5 mb-4">
-        <h2>New Releases</h2>
+        <h2 className="font-bold">New Releases</h2>
         <ViewAll />
       </div>
       {tempAlbums.map((album) => {
