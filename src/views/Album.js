@@ -1,8 +1,20 @@
 import Hashtag from "../components/Hashtag";
 import Hero from "../components/Hero";
+import SongList from "../templates/SongList";
 const album = {
   title: "Old town road",
-  songs: ["one", "two", "three", "four"],
+  songs: [
+    { name: "dasnjidanwj", artist: "safjanji", length: "12:55" },
+    { name: "<feeg>", artist: "wer32142", length: "12:55" },
+    { name: "sA", artist: "zxr", length: "12:55" },
+    { name: "DSFEFS", artist: "zxu5s", length: "12:55" },
+    { name: "zres54y", artist: "zxye", length: "12:55" },
+    { name: "dzherst5h", artist: "e4zst6", length: "12:55" },
+    { name: "xngft", artist: "<az4r3>", length: "12:55" },
+    { name: "5ezrh", artist: "<53wser5a>", length: "12:55" },
+    { name: "zxntr", artist: "23ew<", length: "12:55" },
+    { name: "kjbkygy", artist: "324eaw<", length: "12:55" },
+  ],
 };
 const Album = () => {
   return (
@@ -23,6 +35,7 @@ const Album = () => {
             </div>
           </div>
         </Hero>
+        <SongList songs={album.songs} />
       </section>
     </>
   );

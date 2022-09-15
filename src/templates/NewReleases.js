@@ -11,6 +11,10 @@ const NewReleases = () => {
     { name: "ujsdabniu21", artist: "safhtr5", songs: 11 },
     { name: "hnuret", artist: "syhzez", songs: 23 },
     { name: "w89jhytri", artist: "ij m4398+HN", songs: 45 },
+    { name: "w89jhytri", artist: "ij m4398+HN", songs: 45 },
+    { name: "w89jhytri", artist: "ij m4398+HN", songs: 45 },
+    { name: "w89jhytri", artist: "ij m4398+HN", songs: 45 },
+    { name: "w89jhytri", artist: "ij m4398+HN", songs: 45 },
   ];
   return (
     <section className="m-2">
