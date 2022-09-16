@@ -19,7 +19,7 @@ DONE- Albums - Præsentere featured albums og new releases(albums) (page 24)
 DONE- Album Details - liste traks for et valgt album (page 31)
 DONE- Categories - liste alle kategorier (page 21)
 Playlists - listes tracks fra en valgt playliste (page 19)
-Player - "Afspil" et valgt track (page 12)
+DONE- Player - "Afspil" et valgt track (page 12)
 Login - (page 3)
 Design DONE- Nav - (all pages)
 
