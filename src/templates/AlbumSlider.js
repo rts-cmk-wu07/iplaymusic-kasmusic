@@ -6,7 +6,7 @@ const AlbumSlider = () => {
     <>
       <section className="">
         <div className="flex place-content-between mx-7 mb-4">
-          <h2 className="font-bold">Featured Albums</h2>
+          <h2 className="font-bold dark:text-white">Featured Albums</h2>
           <ViewAll />
         </div>
         <div className="overflow-x-auto flex gap-5 max-w-max ml-7 ">
