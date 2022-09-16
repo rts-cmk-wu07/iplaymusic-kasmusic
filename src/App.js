@@ -7,6 +7,8 @@ import { Routes, Route } from "react-router-dom";
 import Album from "./views/Album";
 import Categories from "./views/Categories";
 import Playlist from "./views/Playlist";
+
+import Login from "./views/Login";
 import Player from "./views/Player";
 import { useState } from "react";
 import DarkMode from "./context/DarkMode";
@@ -33,6 +35,7 @@ function App() {
             <Route path="/album" element={<Album />} />
             <Route path="/playlist" element={<Playlist />} />
             <Route path="/categories" element={<Categories />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </div>
       </div>
