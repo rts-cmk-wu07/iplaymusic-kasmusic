@@ -33,9 +33,24 @@ const Player = () => {
       currentTrack < playlist.length - 1 ? currentTrack + 1 : 0
     );
   };
+
+  const song = {
+    title: "SOME SONG",
+    artist: "SOME ARTIST",
+  };
+
   return (
     <>
       <div className="">
+        <img
+          src="https://picsum.photos/250"
+          alt=""
+          className="mx-auto my-[75px] rounded-full"
+        />
+        <h2 className="mx-auto my-6 max-w-max text-xl font-bold">
+          {song.title}
+        </h2>
+        <p className="mx-auto my-6 max-w-max">{song.artist}</p>
         <AudioPlayer
           src={playlist[currentTrack].src}
           showSkipControls
