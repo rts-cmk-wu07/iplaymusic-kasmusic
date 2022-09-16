@@ -32,7 +32,7 @@ const Categories = () => {
         {categories.map((category, i) => {
           return (
             <CategoryContainer color={categoryColors[i]}>
-              <h2>{category}</h2>
+              <h2 className="text-white font-bold">{category}</h2>
             </CategoryContainer>
           );
         })}

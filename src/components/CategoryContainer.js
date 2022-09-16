@@ -25,7 +25,12 @@ const CategoryContainer = ({ color, children }) => {
             duration: 0.5,
           }}
         >
-          <ChevronDownOutline color={"#ffffff"} height="25px" width="25px" />
+          <ChevronDownOutline
+            color={"#"}
+            height="25px"
+            width="25px"
+            className="text-white"
+          />
         </motion.div>
       </section>
       <motion.section
@@ -42,7 +47,7 @@ const CategoryContainer = ({ color, children }) => {
         {tempSubCategories.map((category) => {
           return (
             <Category>
-              <p className="text-lg">{category}</p>
+              <p className="text-lg dark:text-white">{category}</p>
             </Category>
           );
         })}

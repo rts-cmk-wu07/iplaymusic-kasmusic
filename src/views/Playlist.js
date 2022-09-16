@@ -26,12 +26,16 @@ const Playlist = () => {
         <PlaylistCarousel></PlaylistCarousel>
       </div>
       <div>
-        <h2 className="font-bold text-xl text-center mt-4">Top 50</h2>
-        <h2 className="font-bold text-xl text-center">{playlist.title}</h2>
+        <h2 className="font-bold text-xl text-center mt-4 dark:text-white">
+          Top 50
+        </h2>
+        <h2 className="font-bold text-xl text-center dark:text-white">
+          {playlist.title}
+        </h2>
 
         <SongList songs={playlist.songs}>
           <div className="flex place-content-between mx-5 mb-4">
-            <h2>All Songs</h2>
+            <h2 className="dark:text-white">All Songs</h2>
           </div>
         </SongList>
         <div className="flex place-content-center">

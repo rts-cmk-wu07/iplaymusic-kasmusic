@@ -16,17 +16,25 @@ function App() {
   console.log(darkMode);
   return (
     <DarkMode.Provider value={{ darkMode, setDarkMode }}>
-      <div className={darkMode ? "App dark" : "App"}>
-        <Nav />
-        <TopMenu />
-        <Player />
-        <Routes>
-          <Route path="/" element={<Featured />} />
-          <Route path="/albums" element={<Albums />} />
-          <Route path="/album" element={<Album />} />
-          <Route path="/playlist" element={<Playlist />} />
-          <Route path="/categories" element={<Categories />} />
-        </Routes>
+      <div
+        className={
+          darkMode
+            ? "App dark dark:bg-secondary pb-10"
+            : "App dark:bg-secondary pb-10"
+        }
+      >
+        <div className={"dark:bg-secondary pb-10"}>
+          <Nav />
+          <TopMenu />
+          <Player />
+          <Routes>
+            <Route path="/" element={<Featured />} />
+            <Route path="/albums" element={<Albums />} />
+            <Route path="/album" element={<Album />} />
+            <Route path="/playlist" element={<Playlist />} />
+            <Route path="/categories" element={<Categories />} />
+          </Routes>
+        </div>
       </div>
     </DarkMode.Provider>
   );

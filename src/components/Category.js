@@ -5,7 +5,12 @@ const Category = ({ children }) => {
     <>
       <div className="flex place-content-between my-2">
         {children}
-        <ChevronForwardOutline color={"#000000"} height="25px" width="25px" />
+        <ChevronForwardOutline
+          color={"#"}
+          height="25px"
+          width="25px"
+          className="text-black dark:text-white"
+        />
       </div>
     </>
   );

@@ -47,10 +47,10 @@ const Player = () => {
           alt=""
           className="mx-auto my-[75px] rounded-full"
         />
-        <h2 className="mx-auto my-6 max-w-max text-xl font-bold">
+        <h2 className="mx-auto my-6 max-w-max text-xl font-bold dark:text-white">
           {song.title}
         </h2>
-        <p className="mx-auto my-6 max-w-max">{song.artist}</p>
+        <p className="mx-auto my-6 max-w-max dark:text-white">{song.artist}</p>
         <AudioPlayer
           src={playlist[currentTrack].src}
           showSkipControls

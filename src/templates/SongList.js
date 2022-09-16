@@ -7,18 +7,18 @@ import { PlayCircle } from "react-ionicons";
 const SongList = ({ songs, children }) => {
   return (
     <>
-      <section className="m-2">
+      <section className="m-2 dark:bg-secondary">
         {children}
         {songs &&
           songs.map((song) => {
             return (
               <Album css="flex my-4 mx-5" key={song.name}>
                 <PlayCircle color={"#EE0979"} height="30px" width="30px" />
-                <div className="ml-5 mr-auto">
-                  <h2 className="font-bold">{song.name}</h2>
-                  <p className="font-light">{song.artist}</p>
+                <div className="ml-5 mr-auto ">
+                  <h2 className="font-bold dark:text-white">{song.name}</h2>
+                  <p className="font-light dark:text-white">{song.artist}</p>
                 </div>
-                <p>{song.length}</p>
+                <p className="dark:text-white">{song.length}</p>
               </Album>
             );
           })}
