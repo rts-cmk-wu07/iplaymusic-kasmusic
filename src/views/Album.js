@@ -19,7 +19,7 @@ const album = {
 const Album = () => {
   return (
     <>
-      <section>
+      <section className="dark:bg-secondary">
         <Hero image="https://picsum.photos/425/500">
           <div className="row-start-1 row-end-2 col-start-1 col-end-1 p-6 flex place-content-between flex-col">
             <div>
@@ -36,7 +36,9 @@ const Album = () => {
           </div>
         </Hero>
         <SongList songs={album.songs}>
-          <h3 className="text-base font-bold ml-6 mt-6 mb-6">All Songs</h3>
+          <h3 className="text-base font-bold ml-6 mt-6 mb-6 dark:text-white">
+            All Songs
+          </h3>
         </SongList>
       </section>
     </>

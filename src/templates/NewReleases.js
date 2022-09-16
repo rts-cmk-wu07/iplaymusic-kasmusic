@@ -19,7 +19,7 @@ const NewReleases = () => {
   return (
     <section className="m-2 mt-8">
       <div className="flex place-content-between mx-5 mb-4">
-        <h2 className="font-bold">New Releases</h2>
+        <h2 className="font-bold dark:text-white">New Releases</h2>
         <ViewAll />
       </div>
       {tempAlbums.map((album) => {
@@ -30,10 +30,10 @@ const NewReleases = () => {
             key={album.name}
           >
             <div className="ml-5 mr-auto">
-              <h2 className="font-bold">{album.name}</h2>
-              <p className="font-light">{album.artist}</p>
+              <h2 className="font-bold dark:text-white">{album.name}</h2>
+              <p className="font-light dark:text-white">{album.artist}</p>
             </div>
-            <p>{album.songs} songs</p>
+            <p className="dark:text-white">{album.songs} songs</p>
           </Album>
         );
       })}
