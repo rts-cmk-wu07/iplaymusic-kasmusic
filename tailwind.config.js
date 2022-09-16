@@ -21,6 +21,9 @@ module.exports = {
         orange: "#f18d05",
         red: "#e54028",
       },
+      backgroundImage: {
+        soundwave: "url('images/sound-wave.png')",
+      },
     },
   },
   plugins: [],
