@@ -21,7 +21,7 @@ DONE- Categories - liste alle kategorier (page 21)
 DONE- Playlists - listes tracks fra en valgt playliste (page 19)
 DONE- Player - "Afspil" et valgt track (page 12)
 Login - (page 3)
-Design DONE- Nav - (all pages)
+DONE- Nav - (all pages)
 
 #### navigation
 

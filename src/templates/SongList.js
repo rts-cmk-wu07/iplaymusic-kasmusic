@@ -1,5 +1,4 @@
 import Album from "../components/Album";
-import ViewAll from "../components/ViewAll";
 import { PlayCircle } from "react-ionicons";
 
 //"flex my-4 mx-5"
