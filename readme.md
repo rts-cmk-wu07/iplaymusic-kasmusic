@@ -17,7 +17,7 @@ Proper commit names, commits should be about one thing at a time
 DONE- Featured (index) - Præsenter featured albums. OBS: Dette view skal senere integrere lazyload (page 20)
 DONE- Albums - Præsentere featured albums og new releases(albums) (page 24)
 DONE- Album Details - liste traks for et valgt album (page 31)
-Categories - liste alle kategorier (page 21)
+DONE- Categories - liste alle kategorier (page 21)
 Playlists - listes tracks fra en valgt playliste (page 19)
 Player - "Afspil" et valgt track (page 12)
 Login - (page 3)

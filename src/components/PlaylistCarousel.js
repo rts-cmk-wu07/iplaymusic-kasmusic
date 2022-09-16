@@ -11,7 +11,7 @@ const PlaylistCarousel = () => {
     speed: 500,
     centerMode: true,
     slidesToShow: 1,
-
+    arrows: false,
     slidesToScroll: 1,
     variableWidth: true,
     cssEase: "ease-in",

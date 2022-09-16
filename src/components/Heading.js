@@ -5,7 +5,11 @@ const Heading = ({ children, headingLevel, css }) => {
 
   const safeHeading = headingLevel ? headingLevel.toLowerCase() : "";
   const Heading = validHeadingLevels.includes(safeHeading) ? safeHeading : "p";
-  return <Heading className={css + " " + gradientRules}>{children}</Heading>;
+  return (
+    <Heading className={css + " leading-tight " + gradientRules}>
+      {children}
+    </Heading>
+  );
 };
 
 export default Heading;

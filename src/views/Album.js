@@ -35,7 +35,9 @@ const Album = () => {
             </div>
           </div>
         </Hero>
-        <SongList songs={album.songs} />
+        <SongList songs={album.songs}>
+          <h3 className="text-base font-bold ml-6 mt-6 mb-6">All Songs</h3>
+        </SongList>
       </section>
     </>
   );

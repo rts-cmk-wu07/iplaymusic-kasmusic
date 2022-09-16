@@ -5,6 +5,8 @@ import Albums from "./views/Albums";
 import Featured from "./views/Featured";
 import { Routes, Route } from "react-router-dom";
 import Album from "./views/Album";
+import Categories from "./views/Categories";
+import Playlist from "./views/Playlist";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
         <Route path="/" element={<Featured />} />
         <Route path="/albums" element={<Albums />} />
         <Route path="/album" element={<Album />} />
+        <Route path="/playlist" element={<Playlist />} />
+        <Route path="/categories" element={<Categories />} />
       </Routes>
     </div>
   );
