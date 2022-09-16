@@ -15,6 +15,10 @@ import DarkMode from "./context/DarkMode";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
+
+  (darkMode && document.documentElement.classList.add("bg-secondary")) ||
+    document.documentElement.classList.add("bg-white");
+
   console.log(darkMode);
   return (
     <DarkMode.Provider value={{ darkMode, setDarkMode }}>
