@@ -7,12 +7,14 @@ import { Routes, Route } from "react-router-dom";
 import Album from "./views/Album";
 import Categories from "./views/Categories";
 import Playlist from "./views/Playlist";
+import Player from "./views/Player";
 
 function App() {
   return (
     <div className="App">
       <Nav />
       <TopMenu />
+      <Player />
       <Routes>
         <Route path="/" element={<Featured />} />
         <Route path="/albums" element={<Albums />} />
