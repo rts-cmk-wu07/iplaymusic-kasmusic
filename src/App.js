@@ -10,7 +10,7 @@ import Playlist from "./views/Playlist";
 
 import Login from "./views/Login";
 import Player from "./views/Player";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DarkMode from "./context/DarkMode";
 import Callback from "./views/Callback";
 
@@ -19,6 +19,11 @@ function App() {
 
   (darkMode && document.documentElement.classList.add("bg-secondary")) ||
     document.documentElement.classList.add("bg-white");
+
+  useEffect(() => {
+    console.log(process.env.NODE_ENV);
+    console.log(process.env);
+  }, []);
 
   return (
     <DarkMode.Provider value={{ darkMode, setDarkMode }}>

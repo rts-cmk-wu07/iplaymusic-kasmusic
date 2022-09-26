@@ -10,7 +10,10 @@ exports.handler = async function (event, context) {
     method: "post",
     params: {
       code: body.code,
-      redirect_uri: "http://localhost:8888/callback",
+      redirect_uri:
+        process.env.NODE_ENV === "production"
+          ? "http://localhost:8888/callback"
+          : "PUT_NETLIFY_LINK_HERE",
       grant_type: "authorization_code",
     },
     headers: {
