@@ -13,43 +13,42 @@ import Player from "./views/Player";
 import { useEffect, useState } from "react";
 import DarkMode from "./context/DarkMode";
 import Callback from "./views/Callback";
+import TokenContext from "./context/TokenContext";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
+  var tokenState = useState(null);
 
   (darkMode && document.documentElement.classList.add("bg-secondary")) ||
     document.documentElement.classList.add("bg-white");
 
-  useEffect(() => {
-    console.log(process.env.NODE_ENV);
-    console.log(process.env);
-  }, []);
-
   return (
-    <DarkMode.Provider value={{ darkMode, setDarkMode }}>
-      <div
-        className={
-          darkMode
-            ? "App dark dark:bg-secondary pb-10"
-            : "App dark:bg-secondary pb-10"
-        }
-      >
-        <div className={"dark:bg-secondary pb-10"}>
-          <Nav />
-          <TopMenu />
-          <Player />
-          <Routes>
-            <Route path="/" element={<Featured />} />
-            <Route path="/albums" element={<Albums />} />
-            <Route path="/album" element={<Album />} />
-            <Route path="/playlist" element={<Playlist />} />
-            <Route path="/categories" element={<Categories />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/callback" element={<Callback />} />
-          </Routes>
+    <TokenContext.Provider value={tokenState}>
+      <DarkMode.Provider value={{ darkMode, setDarkMode }}>
+        <div
+          className={
+            darkMode
+              ? "App dark dark:bg-secondary pb-10"
+              : "App dark:bg-secondary pb-10"
+          }
+        >
+          <div className={"dark:bg-secondary pb-10"}>
+            <Nav />
+            <TopMenu />
+            <Player />
+            <Routes>
+              <Route path="/" element={<Featured />} />
+              <Route path="/albums" element={<Albums />} />
+              <Route path="/album" element={<Album />} />
+              <Route path="/playlist" element={<Playlist />} />
+              <Route path="/categories" element={<Categories />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/callback" element={<Callback />} />
+            </Routes>
+          </div>
         </div>
-      </div>
-    </DarkMode.Provider>
+      </DarkMode.Provider>
+    </TokenContext.Provider>
   );
 }
 

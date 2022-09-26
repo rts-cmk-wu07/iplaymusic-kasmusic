@@ -7,7 +7,6 @@ const CategoryContainer = ({ color, children }) => {
   const tempSubCategories = ["1", "2", "3", "4", "5", "6"];
 
   const [showHide, setShowHide] = useState(false);
-  console.log(showHide);
   return (
     <>
       <section
