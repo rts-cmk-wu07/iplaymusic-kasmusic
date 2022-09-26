@@ -2,9 +2,18 @@ import Button from "../components/Button";
 import Form from "../components/Form";
 import { PersonCircleOutline } from "react-ionicons";
 import { Key } from "react-ionicons";
+import querystring from "query-string";
 import FingerprintReader from "../components/FingerprintReader";
 
 const Login = () => {
+  const queryParameters = querystring.stringify({
+    response_type: "code",
+    client_id: "6e41cabab421442da705e71b614b9687",
+    scope: "user-read-private user-read-email",
+    redirect_uri: "http://localhost:8888/callback",
+    state:
+      "pihyapu7zanr789342qavbg79f6rg09wa87g3rbh+B798FABW<G807F32YBFCDI8YBWE0TV387q0rt327",
+  });
   return (
     <>
       <h2 className="font-bold text-4xl ml-6 mb-[112px]">Log In</h2>
@@ -51,7 +60,9 @@ const Login = () => {
           </p>
         </Button>
       </Form>
-      <FingerprintReader></FingerprintReader>
+      <a href={"https://accounts.spotify.com/authorize?" + queryParameters}>
+        <FingerprintReader></FingerprintReader>
+      </a>
     </>
   );
 };

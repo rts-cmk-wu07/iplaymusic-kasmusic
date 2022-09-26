@@ -12,6 +12,7 @@ import Login from "./views/Login";
 import Player from "./views/Player";
 import { useState } from "react";
 import DarkMode from "./context/DarkMode";
+import Callback from "./views/Callback";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -19,7 +20,6 @@ function App() {
   (darkMode && document.documentElement.classList.add("bg-secondary")) ||
     document.documentElement.classList.add("bg-white");
 
-  console.log(darkMode);
   return (
     <DarkMode.Provider value={{ darkMode, setDarkMode }}>
       <div
@@ -40,6 +40,7 @@ function App() {
             <Route path="/playlist" element={<Playlist />} />
             <Route path="/categories" element={<Categories />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/callback" element={<Callback />} />
           </Routes>
         </div>
       </div>
