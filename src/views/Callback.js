@@ -7,6 +7,8 @@ const Callback = () => {
   var [token, setToken] = useContext(TokenContext);
   const code = new URL(document.location).searchParams.get("code");
 
+  console.log(token);
+
   useEffect(
     function () {
       axios
@@ -15,6 +17,7 @@ const Callback = () => {
         .then((response) => {
           setToken(response.data);
           Navigate("/featured");
+          console.log(token);
         });
     },
     [setToken, code]
