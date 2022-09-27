@@ -17,7 +17,6 @@ const playlist = [
 
 const Player = () => {
   const [currentTrack, setCurrentTrack] = useState(0);
-  console.log(currentTrack);
   const handleClickPrev = () => {
     setCurrentTrack((currentTrack) =>
       currentTrack === 0 ? playlist.length - 1 : currentTrack - 1
