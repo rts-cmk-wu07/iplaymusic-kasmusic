@@ -1,7 +1,6 @@
 import Button from "../components/Button";
 import Form from "../components/Form";
-import { PersonCircleOutline } from "react-ionicons";
-import { Key } from "react-ionicons";
+import { IoPersonCircleOutline, IoKeyOutline } from "react-icons/io5";
 import querystring from "query-string";
 import FingerprintReader from "../components/FingerprintReader";
 
@@ -27,7 +26,7 @@ const Login = () => {
             placeholder="Enter your username"
             className="w-11/12 border-b-4 border-additional row-start-2 row-end-3 col-start-1 col-end-2 leading-10"
           ></input>
-          <PersonCircleOutline
+          <IoPersonCircleOutline
             color={"#00000"}
             height="21px"
             width="21px"
@@ -45,12 +44,10 @@ const Login = () => {
             placeholder="Enter your password"
             className="w-11/12 border-b-4 border-additional row-start-2 row-end-3 col-start-1 col-end-2 leading-10"
           ></input>
-          <Key
-            color={"#00000"}
-            height="21px"
-            width="21px"
+          <IoKeyOutline
+            size="21px"
             className={
-              "row-start-2 row-end-3 col-start-1 col-end-2 justify-self-end mr-8 mt-3"
+              "row-start-2 row-end-3 col-start-1 col-end-2 justify-self-end mr-8 mt-3 text-black"
             }
           />
         </label>

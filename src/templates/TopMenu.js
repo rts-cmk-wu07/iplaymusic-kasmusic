@@ -1,4 +1,4 @@
-import { ChevronBackSharp, SearchOutline } from "react-ionicons";
+import { IoChevronBack, IoSearchOutline } from "react-icons/io5";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const TopMenu = () => {
@@ -8,10 +8,8 @@ const TopMenu = () => {
   return (
     <>
       <section className="w-full flex place-content-between items-center p-5 dark:bg-secondary dark:text-white">
-        <ChevronBackSharp
-          color="#"
-          height="25px"
-          width="25px"
+        <IoChevronBack
+          size="25px"
           onClick={() => {
             navigate(-1);
           }}
@@ -20,12 +18,7 @@ const TopMenu = () => {
         <p className="uppercase text-lg tracking-widest">
           {(url && url) || "FEATURED"}
         </p>
-        <SearchOutline
-          color="#"
-          height="25px"
-          width="25px"
-          className="text-black dark:text-white"
-        />
+        <IoSearchOutline size="25px" className="text-black dark:text-white" />
       </section>
     </>
   );
