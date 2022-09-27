@@ -10,7 +10,7 @@ const Callback = () => {
   useEffect(
     function () {
       axios
-        .post("/.netlify/functions/token", JSON.stringify({ code }))
+        .post(".netlify/functions/token", JSON.stringify({ code }))
 
         .then((response) => {
           setToken(response.data);
