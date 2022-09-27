@@ -1,9 +1,26 @@
+import axios from "axios";
+import { useContext, useEffect, useState } from "react";
 import Album from "../components/Album";
+import TokenContext from "../context/TokenContext";
 
 const FeaturedAlbum = () => {
   const styles = {
     featuredAlbum: "grid drop-shadow ml-[25px] mr-[25px]",
   };
+
+  const [token] = useContext(TokenContext);
+  const [content, setContent] = useState([]);
+  console.log(token);
+  console.log(content);
+
+  useEffect(() => {
+    axios
+      .get("https://api.spotify.com/v1/browse/featured-playlists", {
+        headers: { Authorization: "Bearer " + token.access_token },
+      })
+      .then((response) => setContent(response.data.playlists.items));
+  }, [token, setContent]);
+
   return (
     <div>
       <Album
