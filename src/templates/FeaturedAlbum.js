@@ -6,7 +6,7 @@ const FeaturedAlbum = () => {
     featuredAlbum: "grid drop-shadow ml-[25px] mr-[25px] my-[30px]",
   };
 
-  const { content } = useFetch({ link: "featured-playlists" });
+  const { content } = useFetch({ link: "browse/featured-playlists" });
 
   return (
     <div>
