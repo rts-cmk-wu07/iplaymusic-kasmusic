@@ -10,7 +10,7 @@ const FeaturedAlbum = () => {
 
   return (
     <div>
-      {content.map((item) => {
+      {content?.playlists?.items.map((item) => {
         return (
           <Album src={item?.images[0].url} css={styles.featuredAlbum}>
             <div className="mb-[84px] col-start-1 row-start-1 col-end-2 row-end-2 self-end ml-5 text-white">
