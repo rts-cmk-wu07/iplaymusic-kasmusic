@@ -8,10 +8,13 @@ const useFetch = ({ link }) => {
 
   useEffect(() => {
     axios
-      .get("https://api.spotify.com/v1/browse/" + link, {
+      .get("https://api.spotify.com/v1/" + link, {
         headers: { Authorization: "Bearer " + token?.access_token },
       })
-      .then((response) => setContent(response.data.playlists.items));
+      .then((response) => {
+        setContent(response.data);
+        console.log(response);
+      });
   }, [token, setContent]);
 
   return { content };
