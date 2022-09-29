@@ -1,4 +1,4 @@
-import { ChevronDownOutline } from "react-ionicons";
+import { IoChevronDownOutline } from "react-icons/io5";
 import Category from "./Category";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -24,12 +24,7 @@ const CategoryContainer = ({ color, children }) => {
             duration: 0.5,
           }}
         >
-          <ChevronDownOutline
-            color={"#"}
-            height="25px"
-            width="25px"
-            className="text-white"
-          />
+          <IoChevronDownOutline size="25px" className="text-white" />
         </motion.div>
       </section>
       <motion.section
