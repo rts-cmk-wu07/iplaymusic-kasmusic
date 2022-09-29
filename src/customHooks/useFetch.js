@@ -11,7 +11,13 @@ const useFetch = ({ link }) => {
       .get("https://api.spotify.com/v1/browse/" + link, {
         headers: { Authorization: "Bearer " + token?.access_token },
       })
-      .then((response) => setContent(response.data.playlists.items));
+      .then((response) => {
+        if (response.data.error.status === 401) {
+        } else {
+          setContent(response.data);
+          console.log(response);
+        }
+      });
   }, [token, setContent]);
 
   return { content };
