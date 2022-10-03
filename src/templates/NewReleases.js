@@ -1,7 +1,9 @@
 import Album from "../components/Album";
 import ViewAll from "../components/ViewAll";
+import useFetch from "../customHooks/useFetch";
 
 const NewReleases = () => {
+  const { content } = useFetch({ link: "browse/new-releases" });
   const tempAlbums = [
     { name: "FIRST ALBUM", artist: "LOLOLOL", songs: 12 },
     { name: "SANDJWNAJKDS", artist: "SADW", songs: 22 },
@@ -22,18 +24,16 @@ const NewReleases = () => {
         <h2 className="font-bold dark:text-white">New Releases</h2>
         <ViewAll />
       </div>
-      {tempAlbums.map((album) => {
+      {content?.albums?.items.map((item) => {
         return (
-          <Album
-            css="flex my-4 mx-5"
-            src="https://picsum.photos/50"
-            key={album.name}
-          >
+          <Album css="flex my-4 mx-5" src={item.images[2].url} key={item.name}>
             <div className="ml-5 mr-auto">
-              <h2 className="font-bold dark:text-white">{album.name}</h2>
-              <p className="font-light dark:text-white">{album.artist}</p>
+              <h2 className="font-bold dark:text-white">{item.name}</h2>
+              <p className="font-light dark:text-white">
+                {item.artists[0].name}
+              </p>
             </div>
-            <p className="dark:text-white">{album.songs} songs</p>
+            <p className="dark:text-white">{item.total_tracks} songs</p>
           </Album>
         );
       })}
