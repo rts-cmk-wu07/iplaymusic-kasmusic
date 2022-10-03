@@ -27,26 +27,16 @@ const Playlist = () => {
           }
         )
         .then((response) => {
-          setPlaylistContent(response.data);
+          axios
+            .get(response.data.playlists.items[0].href, {
+              headers: { Authorization: "Bearer " + token?.access_token },
+            })
+            .then((response) => {
+              setPlaylistContent(response.data);
+            });
         });
-  }, [setPlaylistContent, categories]);
-  const playlist = {
-    title: "Rock ballads",
-    songs: [
-      { name: "rock", artist: "rock artist 33", length: "13:37" },
-      { name: "n", artist: "n artist 11", length: "4:20" },
-      { name: "roll", artist: "roll artist 22", length: "6:99" },
-      { name: "wanted", artist: "dead", length: "12:55" },
-      { name: "or", artist: "alive", length: "12:55" },
-      { name: "dont", artist: "stop", length: "12:55" },
-      { name: "me", artist: "now", length: "12:55" },
-      { name: "im", artist: "having", length: "12:55" },
-      { name: "such", artist: "a good time", length: "12:55" },
-      { name: "im having", artist: "a ball", length: "12:55" },
-    ],
-  };
+  }, [setPlaylistContent, categories, playlistIndex]);
   console.log(playlistContent);
-  // console.log("this is my", playlistIndex);
   return (
     <>
       <div className="bg-soundwave">
@@ -71,13 +61,19 @@ const Playlist = () => {
       </div>
       <div>
         <h2 className="font-bold text-xl text-center mt-4 dark:text-white">
-          Top 50
+          {categories && categories[playlistIndex].name}
         </h2>
         <h2 className="font-bold text-xl text-center dark:text-white">
-          {playlist.title}
+          {playlistContent && playlistContent.name}
         </h2>
 
-        <SongList songs={playlist.songs}>
+        <SongList
+          songs={
+            playlistContent &&
+            playlistContent.tracks &&
+            playlistContent.tracks.items
+          }
+        >
           <div className="flex place-content-between mx-5 mb-4">
             <h2 className="dark:text-white">All Songs</h2>
           </div>
