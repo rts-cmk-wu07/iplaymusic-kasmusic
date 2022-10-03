@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import Album from "./Album";
 
-const PlaylistCarousel = ({ children }) => {
+const PlaylistCarousel = ({ children, setPlaylistIndex }) => {
   var settings = {
     dots: false,
     infinite: true,
@@ -16,10 +16,14 @@ const PlaylistCarousel = ({ children }) => {
     variableWidth: true,
     cssEase: "ease-in",
   };
-  console.log(this);
+  function swipeHandler(i) {
+    setPlaylistIndex(i);
+  }
   return (
     <div className="max-w-[375px]">
-      <Slider {...settings}>{children}</Slider>
+      <Slider {...settings} afterChange={swipeHandler}>
+        {children}
+      </Slider>
     </div>
   );
 };

@@ -3,9 +3,33 @@ import PlaylistCarousel from "../components/PlaylistCarousel";
 import Button from "../components/Button";
 import useFetch from "../customHooks/useFetch";
 import Album from "../components/Album";
+import { useState } from "react";
+import { useEffect } from "react";
+import { useContext } from "react";
+import axios from "axios";
+import TokenContext from "../context/TokenContext";
+
 const Playlist = () => {
+  const [token] = useContext(TokenContext);
+  const [playContent, setPlaylistContent] = useState([]);
+  const [playlistIndex, setPlaylistIndex] = useState(0);
   const { content } = useFetch({ link: "browse/categories" });
   var categories = content?.categories?.items;
+  useEffect(() => {
+    categories[0] &&
+      axios
+        .get(
+          "https://api.spotify.com/v1/browse/categories/" +
+            categories[playlistIndex] +
+            "/playlists",
+          {
+            headers: { Authorization: "Bearer " + token?.access_token },
+          }
+        )
+        .then((response) => {
+          setPlaylistContent(response.data);
+        });
+  }, [setPlaylistContent, categories]);
   const playlist = {
     title: "Rock ballads",
     songs: [
@@ -21,14 +45,15 @@ const Playlist = () => {
       { name: "im having", artist: "a ball", length: "12:55" },
     ],
   };
-  console.log(content);
+
+  console.log("this is my", playlistIndex);
   return (
     <>
       <div className="bg-soundwave">
         <h2 className="text-white text-5xl font-bold pt-5 mb-6 ml-7">
           Playlists
         </h2>
-        <PlaylistCarousel>
+        <PlaylistCarousel setPlaylistIndex={setPlaylistIndex}>
           {categories?.map((item) => {
             return (
               <div className="ml-6 mr-6">
