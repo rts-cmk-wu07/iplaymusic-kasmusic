@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import Album from "./Album";
 
-const PlaylistCarousel = () => {
+const PlaylistCarousel = ({ children }) => {
   var settings = {
     dots: false,
     infinite: true,
@@ -16,30 +16,10 @@ const PlaylistCarousel = () => {
     variableWidth: true,
     cssEase: "ease-in",
   };
+  console.log(this);
   return (
     <div className="max-w-[375px]">
-      <Slider {...settings}>
-        <div className="ml-6 mr-6">
-          <Album
-            src={"./images/playlistcarousel/photo-1545224144-b38cd309ef69.png"}
-          ></Album>
-        </div>
-        <div className="ml-6 mr-6">
-          <Album
-            src={"./images/playlistcarousel/pexels-photo-949274.png"}
-          ></Album>
-        </div>
-        <div className="ml-6 mr-6">
-          <Album
-            src={"./images/playlistcarousel/photo-1545224144-b38cd309ef69.png"}
-          ></Album>
-        </div>
-        <div className="ml-6 mr-6">
-          <Album
-            src={"./images/playlistcarousel/pexels-photo-442540.png"}
-          ></Album>
-        </div>
-      </Slider>
+      <Slider {...settings}>{children}</Slider>
     </div>
   );
 };

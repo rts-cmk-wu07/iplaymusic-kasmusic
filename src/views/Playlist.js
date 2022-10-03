@@ -1,7 +1,11 @@
 import SongList from "../templates/SongList";
 import PlaylistCarousel from "../components/PlaylistCarousel";
 import Button from "../components/Button";
+import useFetch from "../customHooks/useFetch";
+import Album from "../components/Album";
 const Playlist = () => {
+  const { content } = useFetch({ link: "browse/categories" });
+  var categories = content?.categories?.items;
   const playlist = {
     title: "Rock ballads",
     songs: [
@@ -17,13 +21,28 @@ const Playlist = () => {
       { name: "im having", artist: "a ball", length: "12:55" },
     ],
   };
+  console.log(content);
   return (
     <>
       <div className="bg-soundwave">
         <h2 className="text-white text-5xl font-bold pt-5 mb-6 ml-7">
           Playlists
         </h2>
-        <PlaylistCarousel></PlaylistCarousel>
+        <PlaylistCarousel>
+          {categories?.map((item) => {
+            return (
+              <div className="ml-6 mr-6">
+                <Album>
+                  <img
+                    className="w-[155px] h-[155px]"
+                    src={item.icons[0].url}
+                    alt={item.name}
+                  ></img>
+                </Album>
+              </div>
+            );
+          })}
+        </PlaylistCarousel>
       </div>
       <div>
         <h2 className="font-bold text-xl text-center mt-4 dark:text-white">
