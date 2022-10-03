@@ -16,6 +16,8 @@ const playlist = [
 ];
 
 const Player = () => {
+  const [showPlayer, setShowPlayer] = useState(false);
+
   const [currentTrack, setCurrentTrack] = useState(0);
   const handleClickPrev = () => {
     setCurrentTrack((currentTrack) =>
@@ -40,16 +42,29 @@ const Player = () => {
 
   return (
     <>
-      <div className="">
-        <img
-          src="https://picsum.photos/250"
-          alt=""
-          className="mx-auto my-[75px] rounded-full"
-        />
-        <h2 className="mx-auto my-6 max-w-max text-xl font-bold dark:text-white">
-          {song.title}
-        </h2>
-        <p className="mx-auto my-6 max-w-max dark:text-white">{song.artist}</p>
+      <div className="absolute z-50 max-w-[425px] w-full bg-white top-[0px]">
+        {showPlayer && (
+          <img
+            src="https://picsum.photos/250"
+            alt=""
+            className="mx-auto my-[75px] rounded-full"
+          />
+        )}
+
+        {showPlayer && (
+          <h2 className="mx-auto my-6 max-w-max text-xl font-bold dark:text-white">
+            {song.title}
+          </h2>
+        )}
+        <p
+          className={
+            showPlayer
+              ? "mx-auto my-6 max-w-max dark:text-white"
+              : "mx-auto my-1 max-w-max dark:text-white"
+          }
+        >
+          {song.artist}
+        </p>
         <AudioPlayer
           src={playlist[currentTrack].src}
           showSkipControls
