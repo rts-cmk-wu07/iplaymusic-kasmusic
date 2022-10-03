@@ -11,16 +11,16 @@ import TokenContext from "../context/TokenContext";
 
 const Playlist = () => {
   const [token] = useContext(TokenContext);
-  const [playContent, setPlaylistContent] = useState([]);
+  const [playlistContent, setPlaylistContent] = useState([]);
   const [playlistIndex, setPlaylistIndex] = useState(0);
   const { content } = useFetch({ link: "browse/categories" });
   var categories = content?.categories?.items;
   useEffect(() => {
-    categories[0] &&
+    categories &&
       axios
         .get(
           "https://api.spotify.com/v1/browse/categories/" +
-            categories[playlistIndex] +
+            categories[playlistIndex].id +
             "/playlists",
           {
             headers: { Authorization: "Bearer " + token?.access_token },
@@ -45,8 +45,8 @@ const Playlist = () => {
       { name: "im having", artist: "a ball", length: "12:55" },
     ],
   };
-
-  console.log("this is my", playlistIndex);
+  console.log(playlistContent);
+  // console.log("this is my", playlistIndex);
   return (
     <>
       <div className="bg-soundwave">
