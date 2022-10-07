@@ -14,7 +14,8 @@ const CategoryContainer = ({ color, children }) => {
           setShowHide(!showHide);
         }}
         className={
-          "p-[25px] rounded-xl flex place-content-between my-4 " + color
+          "p-[25px] rounded-xl flex place-content-between my-4 mx-[25px] " +
+          color
         }
       >
         {children}
@@ -28,11 +29,8 @@ const CategoryContainer = ({ color, children }) => {
         </motion.div>
       </section>
       <motion.section
-        className="mx-6 "
-        variants={
-          ({ show: { scaleY: 100, display: "block" } },
-          { hidden: { scaleY: 0, display: "none" } })
-        }
+        className="mx-6 h-fit overflow-hidden "
+        variants={({ show: { height: "100%" } }, { hidden: { height: 0 } })}
         animate={showHide ? "show" : "hidden"}
         transition={{
           duration: 0.5,
