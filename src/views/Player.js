@@ -57,8 +57,8 @@ const Player = () => {
         }}
         className={
           (fullPlayer &&
-            "absolute z-50 max-w-[425px] w-full bg-white top-[0px]") ||
-          "absolute z-50 max-w-[425px] w-full bg-white bottom-[62px]"
+            "fixed z-50 max-w-[425px] w-full bg-white top-[0px] h-full") ||
+          "fixed z-50 max-w-[425px] w-full bg-white bottom-[62px]"
         }
         id="minified"
       >
