@@ -5,8 +5,9 @@
 // https://lhz516.github.io/react-h5-audio-player/?path=/docs/layouts-advanced--custom-additional-controls
 //
 
-import { useState } from "react";
+import { createRef, useState } from "react";
 import AudioPlayer, { RHAP_UI } from "react-h5-audio-player";
+import { IoChevronBack } from "react-icons/io5";
 import "../react-player.css";
 
 const playlist = [
@@ -16,7 +17,7 @@ const playlist = [
 ];
 
 const Player = () => {
-  const [showPlayer, setShowPlayer] = useState(false);
+  const [fullPlayer, setFullPlayer] = useState(false);
 
   const [currentTrack, setCurrentTrack] = useState(0);
   const handleClickPrev = () => {
@@ -40,10 +41,41 @@ const Player = () => {
     artist: "SOME ARTIST",
   };
 
+  const playerContainer = createRef();
+
   return (
     <>
-      <div className="absolute z-50 max-w-[425px] w-full bg-white top-[0px]">
-        {showPlayer && (
+      <div
+        ref={playerContainer}
+        onClick={(e) => {
+          setFullPlayer(!fullPlayer);
+          console.log(playerContainer.current);
+          playerContainer.current.setAttribute(
+            "id",
+            (fullPlayer && "minified") || "maximized"
+          );
+        }}
+        className={
+          (fullPlayer &&
+            "absolute z-50 max-w-[425px] w-full bg-white top-[0px]") ||
+          "absolute z-50 max-w-[425px] w-full bg-white bottom-[62px]"
+        }
+        id="minified"
+      >
+        {fullPlayer && (
+          <section className="w-full flex place-content-between items-center p-5">
+            <IoChevronBack
+              size="25px"
+              onClick={() => {
+                setFullPlayer(false);
+              }}
+              className="text-black dark:text-white"
+            />
+            <p className="uppercase text-lg tracking-widest">Playing</p>
+            <div className="w-[25px]"></div>
+          </section>
+        )}
+        {fullPlayer && (
           <img
             src="https://picsum.photos/250"
             alt=""
@@ -51,23 +83,23 @@ const Player = () => {
           />
         )}
 
-        {showPlayer && (
+        {fullPlayer && (
           <h2 className="mx-auto my-6 max-w-max text-xl font-bold dark:text-white">
             {song.title}
           </h2>
         )}
         <p
           className={
-            showPlayer
+            fullPlayer
               ? "mx-auto my-6 max-w-max dark:text-white"
               : "mx-auto my-1 max-w-max dark:text-white"
           }
         >
-          {song.artist}
+          {fullPlayer && song.artist}
         </p>
         <AudioPlayer
           src={playlist[currentTrack].src}
-          showSkipControls
+          showSkipControls={fullPlayer}
           onClickPrevious={handleClickPrev}
           onClickNext={handleClickNext}
           onEnded={handleEnd}
@@ -76,7 +108,11 @@ const Player = () => {
             RHAP_UI.PROGRESS_BAR,
             RHAP_UI.DURATION,
           ]}
-          customControlsSection={[RHAP_UI.MAIN_CONTROLS]}
+          customControlsSection={[
+            <p className="minified_artist hidden">{song.artist}</p>,
+            RHAP_UI.MAIN_CONTROLS,
+            <p className="minified_songname hidden">{song.title}</p>,
+          ]}
         />
       </div>
     </>

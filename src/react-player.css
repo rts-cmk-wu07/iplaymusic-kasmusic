@@ -274,3 +274,33 @@
 .rhap_button-clear:focus:not(:focus-visible) {
   outline: 0;
 }
+
+/* minified player */
+
+#minified .rhap_play-pause-button > svg,
+#minified .rhap_play-pause-button {
+  height: 35px;
+  width: 35px;
+}
+
+#minified .rhap_progress-section {
+  display: flex;
+}
+
+#minified .rhap_time {
+  margin-top: 0;
+}
+
+#minified {
+  border: 1px solid black;
+  border-radius: 1rem;
+}
+
+#minified .minified_artist,
+#minified .minified_songname {
+  display: block;
+}
+
+#minified .rhap_controls-section {
+  width: 100%;
+}
