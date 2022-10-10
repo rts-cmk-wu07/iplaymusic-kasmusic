@@ -44,15 +44,31 @@ const Player = () => {
 
   let playerContainer = useRef();
 
+  const playerAnimationVariants = {
+    show: {
+      top: "0px",
+      bottom: "unset",
+      height: "100vh",
+    },
+    hidden: {
+      top: "unset",
+      bottom: "62px",
+      height: "89px",
+    },
+  };
+
   return (
     <>
       <motion.div
         ref={playerContainer}
         onClick={(e) => {
           if (
+            // eslint-disable-next-line
             e.target.tagName != "svg" &&
+            // eslint-disable-next-line
             e.target.tagName != "path" &&
-            e.target.classList.contains("rhap_progress-indic")
+            !e.target.classList.contains("rhap_progress-indicator") &&
+            !e.target.classList.contains("rhap_progress-container")
           ) {
             playerContainer?.current?.setAttribute(
               "id",
@@ -67,11 +83,11 @@ const Player = () => {
             : "overflow-hidden fixed z-40 max-w-[425px] w-full bg-white bottom-[62px] "
         }
         id="minified"
-        /* variants={({ show: { height: 700 } }, { hidden: { height: 89 } })}
+        variants={playerAnimationVariants}
         animate={fullPlayer ? "show" : "hidden"}
         transition={{
           duration: 0.5,
-        }} */
+        }}
       >
         {fullPlayer && (
           <section className="w-full flex place-content-between items-center p-5">
