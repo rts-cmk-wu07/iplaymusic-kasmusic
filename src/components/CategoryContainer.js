@@ -29,8 +29,11 @@ const CategoryContainer = ({ color, children }) => {
         </motion.div>
       </section>
       <motion.section
-        className="mx-6 h-fit overflow-hidden "
-        variants={({ show: { height: "100%" } }, { hidden: { height: 0 } })}
+        className="mx-6 h-0 overflow-hidden "
+        variants={{
+          show: { height: "100%" },
+          hidden: { height: "0" },
+        }}
         animate={showHide ? "show" : "hidden"}
         transition={{
           duration: 0.5,

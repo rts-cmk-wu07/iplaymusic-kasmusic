@@ -44,19 +44,6 @@ const Player = () => {
 
   let playerContainer = useRef();
 
-  const playerAnimationVariants = {
-    show: {
-      top: "0px",
-      bottom: "unset",
-      height: "100vh",
-    },
-    hidden: {
-      top: "unset",
-      bottom: "62px",
-      height: "89px",
-    },
-  };
-
   return (
     <>
       <motion.div
@@ -83,7 +70,18 @@ const Player = () => {
             : "overflow-hidden fixed z-40 max-w-[425px] w-full bg-white bottom-[62px] "
         }
         id="minified"
-        variants={playerAnimationVariants}
+        variants={{
+          show: {
+            top: "0px",
+            bottom: "unset",
+            height: "100vh",
+          },
+          hidden: {
+            top: "unset",
+            bottom: "62px",
+            height: "89px",
+          },
+        }}
         animate={fullPlayer ? "show" : "hidden"}
         transition={{
           duration: 0.5,
