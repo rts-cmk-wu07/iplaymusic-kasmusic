@@ -56,19 +56,16 @@ const Player = () => {
           setFullPlayer(!fullPlayer);
         }}
         className={
-          (fullPlayer &&
-            "overflow-hidden fixed z-40 max-w-[425px] w-full bg-white top-[0px] h-full ") ||
-          "overflow-hidden fixed z-40 max-w-[425px] w-full bg-white bottom-[62px] "
+          fullPlayer
+            ? "overflow-hidden fixed z-40 max-w-[425px] w-full bg-white top-[0px] "
+            : "overflow-hidden fixed z-40 max-w-[425px] w-full bg-white bottom-[62px] "
         }
         id="minified"
-        variants={
-          ({ full: { border: "5px dotted yellow", width: "100%" } },
-          { minified: { border: "1px solid black" } })
-        }
-        animate={fullPlayer ? "full" : "minified"}
+        /* variants={({ show: { height: 700 } }, { hidden: { height: 89 } })}
+        animate={fullPlayer ? "show" : "hidden"}
         transition={{
           duration: 0.5,
-        }}
+        }} */
       >
         {fullPlayer && (
           <section className="w-full flex place-content-between items-center p-5">
