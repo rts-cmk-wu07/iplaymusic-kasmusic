@@ -60,8 +60,6 @@ const Player = () => {
             );
             setFullPlayer(!fullPlayer);
           }
-          console.log(e.target);
-          console.log(e.target.tagName);
         }}
         className={
           fullPlayer
