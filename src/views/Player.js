@@ -49,11 +49,19 @@ const Player = () => {
       <motion.div
         ref={playerContainer}
         onClick={(e) => {
-          playerContainer?.current?.setAttribute(
-            "id",
-            fullPlayer ? "minified" : "maxified"
-          );
-          setFullPlayer(!fullPlayer);
+          if (
+            e.target.tagName != "svg" &&
+            e.target.tagName != "path" &&
+            e.target.classList.contains("rhap_progress-indic")
+          ) {
+            playerContainer?.current?.setAttribute(
+              "id",
+              fullPlayer ? "minified" : "maxified"
+            );
+            setFullPlayer(!fullPlayer);
+          }
+          console.log(e.target);
+          console.log(e.target.tagName);
         }}
         className={
           fullPlayer
