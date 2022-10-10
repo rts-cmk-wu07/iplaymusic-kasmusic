@@ -5,9 +5,10 @@
 // https://lhz516.github.io/react-h5-audio-player/?path=/docs/layouts-advanced--custom-additional-controls
 //
 
-import { createRef, useState } from "react";
+import { useRef, useState } from "react";
 import AudioPlayer, { RHAP_UI } from "react-h5-audio-player";
 import { IoChevronBack } from "react-icons/io5";
+import { motion } from "framer-motion";
 import "../react-player.css";
 
 const playlist = [
@@ -41,26 +42,33 @@ const Player = () => {
     artist: "SOME ARTIST",
   };
 
-  const playerContainer = createRef();
+  let playerContainer = useRef();
 
   return (
     <>
-      <div
+      <motion.div
         ref={playerContainer}
         onClick={(e) => {
-          setFullPlayer(!fullPlayer);
-          console.log(playerContainer.current);
-          playerContainer.current.setAttribute(
+          playerContainer?.current?.setAttribute(
             "id",
-            (fullPlayer && "minified") || "maximized"
+            fullPlayer ? "minified" : "maxified"
           );
+          setFullPlayer(!fullPlayer);
         }}
         className={
           (fullPlayer &&
-            "fixed z-50 max-w-[425px] w-full bg-white top-[0px] h-full") ||
-          "fixed z-50 max-w-[425px] w-full bg-white bottom-[62px]"
+            "overflow-hidden fixed z-40 max-w-[425px] w-full bg-white top-[0px] h-full ") ||
+          "overflow-hidden fixed z-40 max-w-[425px] w-full bg-white bottom-[62px] "
         }
         id="minified"
+        variants={
+          ({ full: { border: "5px dotted yellow", width: "100%" } },
+          { minified: { border: "1px solid black" } })
+        }
+        animate={fullPlayer ? "full" : "minified"}
+        transition={{
+          duration: 0.5,
+        }}
       >
         {fullPlayer && (
           <section className="w-full flex place-content-between items-center p-5">
@@ -114,7 +122,7 @@ const Player = () => {
             <p className="minified_songname hidden">{song.title}</p>,
           ]}
         />
-      </div>
+      </motion.div>
     </>
   );
 };
