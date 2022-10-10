@@ -1,39 +1,79 @@
 import SongList from "../templates/SongList";
 import PlaylistCarousel from "../components/PlaylistCarousel";
 import Button from "../components/Button";
+import useFetch from "../customHooks/useFetch";
+import Album from "../components/Album";
+import { useState } from "react";
+import { useEffect } from "react";
+import { useContext } from "react";
+import axios from "axios";
+import TokenContext from "../context/TokenContext";
+
 const Playlist = () => {
-  const playlist = {
-    title: "Rock ballads",
-    songs: [
-      { name: "rock", artist: "rock artist 33", length: "13:37" },
-      { name: "n", artist: "n artist 11", length: "4:20" },
-      { name: "roll", artist: "roll artist 22", length: "6:99" },
-      { name: "wanted", artist: "dead", length: "12:55" },
-      { name: "or", artist: "alive", length: "12:55" },
-      { name: "dont", artist: "stop", length: "12:55" },
-      { name: "me", artist: "now", length: "12:55" },
-      { name: "im", artist: "having", length: "12:55" },
-      { name: "such", artist: "a good time", length: "12:55" },
-      { name: "im having", artist: "a ball", length: "12:55" },
-    ],
-  };
+  const [token] = useContext(TokenContext);
+  const [playlistContent, setPlaylistContent] = useState([]);
+  const [playlistIndex, setPlaylistIndex] = useState(0);
+  const { content } = useFetch({ link: "browse/categories" });
+  var categories = content?.categories?.items;
+  useEffect(() => {
+    categories &&
+      axios
+        .get(
+          "https://api.spotify.com/v1/browse/categories/" +
+            categories[playlistIndex].id +
+            "/playlists",
+          {
+            headers: { Authorization: "Bearer " + token?.access_token },
+          }
+        )
+        .then((response) => {
+          axios
+            .get(response.data.playlists.items[0].href, {
+              headers: { Authorization: "Bearer " + token?.access_token },
+            })
+            .then((response) => {
+              setPlaylistContent(response.data);
+            });
+        });
+  }, [setPlaylistContent, categories, playlistIndex]);
+  console.log(playlistContent);
   return (
     <>
       <div className="bg-soundwave">
         <h2 className="text-white text-5xl font-bold pt-5 mb-6 ml-7">
           Playlists
         </h2>
-        <PlaylistCarousel></PlaylistCarousel>
+        <PlaylistCarousel setPlaylistIndex={setPlaylistIndex}>
+          {categories?.map((item) => {
+            return (
+              <div className="ml-6 mr-6">
+                <Album>
+                  <img
+                    className="w-[155px] h-[155px]"
+                    src={item.icons[0].url}
+                    alt={item.name}
+                  ></img>
+                </Album>
+              </div>
+            );
+          })}
+        </PlaylistCarousel>
       </div>
       <div>
         <h2 className="font-bold text-xl text-center mt-4 dark:text-white">
-          Top 50
+          {categories && categories[playlistIndex].name}
         </h2>
         <h2 className="font-bold text-xl text-center dark:text-white">
-          {playlist.title}
+          {playlistContent && playlistContent.name}
         </h2>
 
-        <SongList songs={playlist.songs}>
+        <SongList
+          songs={
+            playlistContent &&
+            playlistContent.tracks &&
+            playlistContent.tracks.items
+          }
+        >
           <div className="flex place-content-between mx-5 mb-4">
             <h2 className="dark:text-white">All Songs</h2>
           </div>
