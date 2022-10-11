@@ -37,8 +37,14 @@ function App() {
   const [darkMode, setDarkMode] = useState(false);
   var tokenState = useState(null);
 
-  (darkMode && document.documentElement.classList.add("bg-secondary")) ||
-    document.documentElement.classList.add("bg-white");
+  useEffect(() => {
+    document.documentElement.classList.remove("bg-white");
+    document.documentElement.classList.remove("bg-secondary");
+
+    darkMode
+      ? document.documentElement.classList.toggle("bg-secondary")
+      : document.documentElement.classList.add("bg-white");
+  }, [darkMode]);
 
   return (
     <TokenContext.Provider value={tokenState}>

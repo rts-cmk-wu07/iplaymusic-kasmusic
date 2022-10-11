@@ -66,8 +66,8 @@ const Player = () => {
         }}
         className={
           fullPlayer
-            ? "overflow-hidden fixed z-40 max-w-[425px] w-full bg-white top-[0px] "
-            : "overflow-hidden fixed z-40 max-w-[425px] w-full bg-white bottom-[62px] "
+            ? "dark:bg-secondary overflow-hidden fixed z-40 max-w-[425px] w-full bg-white top-[0px] "
+            : "dark:bg-secondary overflow-hidden fixed z-40 max-w-[425px] w-full bg-white bottom-[62px] "
         }
         id="minified"
         variants={{
@@ -96,7 +96,9 @@ const Player = () => {
               }}
               className="text-black dark:text-white"
             />
-            <p className="uppercase text-lg tracking-widest">Playing</p>
+            <p className="uppercase text-lg tracking-widest dark:text-white">
+              Playing
+            </p>
             <div className="w-[25px]"></div>
           </section>
         )}
