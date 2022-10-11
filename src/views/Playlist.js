@@ -36,7 +36,6 @@ const Playlist = () => {
             });
         });
   }, [setPlaylistContent, categories, playlistIndex]);
-  console.log(playlistContent);
   return (
     <>
       <div className="bg-soundwave">
