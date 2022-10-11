@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { useContext } from "react";
 import axios from "axios";
 import TokenContext from "../context/TokenContext";
+import PageTransitions from "../animations/PageTransitions";
 
 const Playlist = () => {
   const [token] = useContext(TokenContext);
@@ -38,55 +39,57 @@ const Playlist = () => {
   }, [setPlaylistContent, categories, playlistIndex]);
   return (
     <>
-      <div className="bg-soundwave">
-        <h2 className="text-white text-5xl font-bold pt-5 mb-6 ml-7">
-          Playlists
-        </h2>
-        <PlaylistCarousel setPlaylistIndex={setPlaylistIndex}>
-          {categories?.map((item) => {
-            return (
-              <div className="ml-6 mr-6">
-                <Album>
-                  <img
-                    className="w-[155px] h-[155px]"
-                    src={item.icons[0].url}
-                    alt={item.name}
-                  ></img>
-                </Album>
-              </div>
-            );
-          })}
-        </PlaylistCarousel>
-      </div>
-      <div>
-        <h2 className="font-bold text-xl text-center mt-4 dark:text-white">
-          {categories && categories[playlistIndex].name}
-        </h2>
-        <h2 className="font-bold text-xl text-center dark:text-white">
-          {playlistContent && playlistContent.name}
-        </h2>
-
-        <SongList
-          songs={
-            playlistContent &&
-            playlistContent.tracks &&
-            playlistContent.tracks.items
-          }
-        >
-          <div className="flex place-content-between mx-5 mb-4">
-            <h2 className="dark:text-white">All Songs</h2>
-          </div>
-        </SongList>
-        <div className="flex place-content-center">
-          <Button
-            css={"w-11/12 border-solid border-4 rounded-full border-primary"}
-          >
-            <p className="font-xl text-primary tracking-widest uppercase mb-4 mt-4 font-bold">
-              listen all
-            </p>
-          </Button>
+      <PageTransitions>
+        <div className="bg-soundwave">
+          <h2 className="text-white text-5xl font-bold pt-5 mb-6 ml-7">
+            Playlists
+          </h2>
+          <PlaylistCarousel setPlaylistIndex={setPlaylistIndex}>
+            {categories?.map((item) => {
+              return (
+                <div className="ml-6 mr-6">
+                  <Album>
+                    <img
+                      className="w-[155px] h-[155px]"
+                      src={item.icons[0].url}
+                      alt={item.name}
+                    ></img>
+                  </Album>
+                </div>
+              );
+            })}
+          </PlaylistCarousel>
         </div>
-      </div>
+        <div>
+          <h2 className="font-bold text-xl text-center mt-4 dark:text-white">
+            {categories && categories[playlistIndex].name}
+          </h2>
+          <h2 className="font-bold text-xl text-center dark:text-white">
+            {playlistContent && playlistContent.name}
+          </h2>
+
+          <SongList
+            songs={
+              playlistContent &&
+              playlistContent.tracks &&
+              playlistContent.tracks.items
+            }
+          >
+            <div className="flex place-content-between mx-5 mb-4">
+              <h2 className="dark:text-white">All Songs</h2>
+            </div>
+          </SongList>
+          <div className="flex place-content-center">
+            <Button
+              css={"w-11/12 border-solid border-4 rounded-full border-primary"}
+            >
+              <p className="font-xl text-primary tracking-widest uppercase mb-4 mt-4 font-bold">
+                listen all
+              </p>
+            </Button>
+          </div>
+        </div>
+      </PageTransitions>
     </>
   );
 };

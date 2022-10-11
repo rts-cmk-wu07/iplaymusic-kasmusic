@@ -1,3 +1,4 @@
+import PageTransitions from "../animations/PageTransitions";
 import CategoryContainer from "../components/CategoryContainer";
 import Heading from "../components/Heading";
 
@@ -27,16 +28,18 @@ const Categories = () => {
   ];
   return (
     <>
-      <section>
-        <Heading headingLevel="h1">Categories</Heading>
-        {categories.map((category, i) => {
-          return (
-            <CategoryContainer color={categoryColors[i]}>
-              <h2 className="text-white font-bold">{category}</h2>
-            </CategoryContainer>
-          );
-        })}
-      </section>
+      <PageTransitions>
+        <section>
+          <Heading headingLevel="h1">Categories</Heading>
+          {categories.map((category, i) => {
+            return (
+              <CategoryContainer color={categoryColors[i]}>
+                <h2 className="text-white font-bold">{category}</h2>
+              </CategoryContainer>
+            );
+          })}
+        </section>
+      </PageTransitions>
     </>
   );
 };

@@ -3,7 +3,7 @@ import Nav from "./templates/Nav";
 import TopMenu from "./templates/TopMenu";
 import Albums from "./views/Albums";
 import Featured from "./views/Featured";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation, Switch } from "react-router-dom";
 import Album from "./views/Album";
 import Categories from "./views/Categories";
 import Playlist from "./views/Playlist";
@@ -14,6 +14,24 @@ import { useEffect, useState } from "react";
 import DarkMode from "./context/DarkMode";
 import Callback from "./views/Callback";
 import TokenContext from "./context/TokenContext";
+import { AnimatePresence } from "framer-motion";
+
+const Animated = () => {
+  const location = useLocation();
+  return (
+    <AnimatePresence exitBeforeEnter mode={"wait"}>
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Featured />} key="featured" />
+        <Route path="/albums" element={<Albums />} key="ablums" />
+        <Route path="/album" element={<Album />} key="album" />
+        <Route path="/playlist" element={<Playlist />} key="playlist" />
+        <Route path="/categories" element={<Categories />} key="categories" />
+        <Route path="/login" element={<Login />} key="login" />
+        <Route path="/callback" element={<Callback />} key="callback" />
+      </Routes>
+    </AnimatePresence>
+  );
+};
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -36,15 +54,7 @@ function App() {
             <Nav />
             <TopMenu />
             <Player />
-            <Routes>
-              <Route path="/" element={<Featured />} />
-              <Route path="/albums" element={<Albums />} />
-              <Route path="/album" element={<Album />} />
-              <Route path="/playlist" element={<Playlist />} />
-              <Route path="/categories" element={<Categories />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/callback" element={<Callback />} />
-            </Routes>
+            <Animated />
           </div>
         </div>
       </DarkMode.Provider>
