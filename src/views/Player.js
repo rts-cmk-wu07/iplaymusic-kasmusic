@@ -13,11 +13,13 @@ import "../react-player.css";
 import MusicList from "../context/MusicList";
 
 const Player = () => {
-  const { musicList, setMusicList } = useContext(MusicList);
+  const { musicList } = useContext(MusicList);
 
   const [fullPlayer, setFullPlayer] = useState(false);
 
   const [currentTrack, setCurrentTrack] = useState(0);
+  console.log(musicList);
+  console.log(musicList[currentTrack].name);
   const handleClickPrev = () => {
     setCurrentTrack((currentTrack) =>
       currentTrack === 0 ? musicList.length - 1 : currentTrack - 1
@@ -32,11 +34,6 @@ const Player = () => {
     setCurrentTrack((currentTrack) =>
       currentTrack < musicList.length - 1 ? currentTrack + 1 : 0
     );
-  };
-
-  const song = {
-    title: "SOME SONG",
-    artist: "SOME ARTIST",
   };
 
   let playerContainer = useRef();
@@ -110,7 +107,7 @@ const Player = () => {
 
           {fullPlayer && (
             <h2 className="mx-auto my-6 max-w-max text-xl font-bold dark:text-white">
-              {song.title}
+              {musicList[currentTrack]?.name}
             </h2>
           )}
           <p
@@ -120,10 +117,10 @@ const Player = () => {
                 : "mx-auto my-1 max-w-max dark:text-white"
             }
           >
-            {fullPlayer && song.artist}
+            {fullPlayer && musicList[currentTrack]?.artists[0].name}
           </p>
           <AudioPlayer
-            src={musicList[currentTrack]?.src}
+            src={musicList[currentTrack]?.uri}
             showSkipControls={fullPlayer}
             onClickPrevious={handleClickPrev}
             onClickNext={handleClickNext}
@@ -135,11 +132,11 @@ const Player = () => {
             ]}
             customControlsSection={[
               <p className="minified_artist hidden dark:text-white">
-                {song.artist}
+                {musicList[currentTrack]?.name}
               </p>,
               RHAP_UI.MAIN_CONTROLS,
               <p className="minified_songname hidden dark:text-white">
-                {song.title}
+                {musicList[currentTrack]?.artists[0].name}
               </p>,
             ]}
           />

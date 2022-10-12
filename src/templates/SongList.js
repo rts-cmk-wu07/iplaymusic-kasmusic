@@ -1,17 +1,15 @@
 import Album from "../components/Album";
 import { IoPlayCircle } from "react-icons/io5";
-
-//"flex my-4 mx-5"
+import MusicList from "../context/MusicList";
+import { useContext } from "react";
 
 const SongList = ({ songs, children }) => {
-  //
+  const { musicList, setMusicList } = useContext(MusicList);
   const formatTime = (milliseconds) => {
     const seconds = Math.floor((milliseconds / 1000) % 60);
     const minutes = Math.floor((milliseconds / 1000 / 60) % 60);
-    const hours = Math.floor((milliseconds / 1000 / 60 / 60) % 24);
 
     return [
-      /* hours.toString().padStart(2, "0"), */
       minutes.toString().padStart(2, "0"),
       seconds.toString().padStart(2, "0"),
     ].join(":");
@@ -25,7 +23,15 @@ const SongList = ({ songs, children }) => {
           songs.map((song) => {
             return (
               <Album css="flex my-4 mx-5" key={song.track.name}>
-                <IoPlayCircle className={"#EE0979"} size="30px" />
+                <IoPlayCircle
+                  className={"#EE0979"}
+                  size="30px"
+                  onClick={() => {
+                    musicList
+                      ? setMusicList([...musicList, song.track])
+                      : setMusicList([song.track]);
+                  }}
+                />
                 <div className="ml-5 mr-auto ">
                   <h2 className="font-bold dark:text-white">
                     {song.track.name}

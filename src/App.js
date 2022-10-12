@@ -3,7 +3,7 @@ import Nav from "./templates/Nav";
 import TopMenu from "./templates/TopMenu";
 import Albums from "./views/Albums";
 import Featured from "./views/Featured";
-import { Routes, Route, useLocation, Switch } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Album from "./views/Album";
 import Categories from "./views/Categories";
 import Playlist from "./views/Playlist";
