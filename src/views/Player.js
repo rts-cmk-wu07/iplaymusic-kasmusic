@@ -18,8 +18,6 @@ const Player = () => {
   const [fullPlayer, setFullPlayer] = useState(false);
 
   const [currentTrack, setCurrentTrack] = useState(0);
-  console.log(musicList);
-  console.log(musicList[currentTrack].name);
   const handleClickPrev = () => {
     setCurrentTrack((currentTrack) =>
       currentTrack === 0 ? musicList.length - 1 : currentTrack - 1
