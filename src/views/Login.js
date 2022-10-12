@@ -9,7 +9,7 @@ const Login = () => {
   const queryParameters = querystring.stringify({
     response_type: "code",
     client_id: "6e41cabab421442da705e71b614b9687",
-    scope: "user-read-private user-read-email",
+    scope: "user-read-private user-read-email streaming",
     redirect_uri: "http://localhost:8888/callback",
     state:
       "pihyapu7zanr789342qavbg79f6rg09wa87g3rbh+B798FABW<G807F32YBFCDI8YBWE0TV387q0rt327",

@@ -11,6 +11,7 @@ import { IoChevronBack } from "react-icons/io5";
 import { motion } from "framer-motion";
 import "../react-player.css";
 import MusicList from "../context/MusicList";
+import Webplayback from "../components/Webplayback";
 
 const Player = () => {
   const { musicList } = useContext(MusicList);
@@ -18,8 +19,6 @@ const Player = () => {
   const [fullPlayer, setFullPlayer] = useState(false);
 
   const [currentTrack, setCurrentTrack] = useState(0);
-  console.log(musicList);
-  console.log(musicList[currentTrack].name);
   const handleClickPrev = () => {
     setCurrentTrack((currentTrack) =>
       currentTrack === 0 ? musicList.length - 1 : currentTrack - 1
@@ -38,8 +37,11 @@ const Player = () => {
 
   let playerContainer = useRef();
 
+  const [player, setPlayer] = useState(undefined);
+
   return (
     <>
+      <Webplayback player={player} setPlayer={setPlayer} />
       {musicList && (
         <motion.div
           ref={playerContainer}
