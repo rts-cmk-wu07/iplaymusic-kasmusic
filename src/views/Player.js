@@ -5,35 +5,32 @@
 // https://lhz516.github.io/react-h5-audio-player/?path=/docs/layouts-advanced--custom-additional-controls
 //
 
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import AudioPlayer, { RHAP_UI } from "react-h5-audio-player";
 import { IoChevronBack } from "react-icons/io5";
 import { motion } from "framer-motion";
 import "../react-player.css";
-
-const playlist = [
-  { src: "https://hanzluo.s3-us-west-1.amazonaws.com/music/ziyounvshen.mp3" },
-  { src: "http://hanzluo.s3-us-west-1.amazonaws.com/music/wuyuwuqing.mp3" },
-  { src: "http://hanzluo.s3-us-west-1.amazonaws.com/music/suipian.mp3" },
-];
+import MusicList from "../context/MusicList";
 
 const Player = () => {
+  const { musicList, setMusicList } = useContext(MusicList);
+
   const [fullPlayer, setFullPlayer] = useState(false);
 
   const [currentTrack, setCurrentTrack] = useState(0);
   const handleClickPrev = () => {
     setCurrentTrack((currentTrack) =>
-      currentTrack === 0 ? playlist.length - 1 : currentTrack - 1
+      currentTrack === 0 ? musicList.length - 1 : currentTrack - 1
     );
   };
   const handleClickNext = () => {
     setCurrentTrack((currentTrack) =>
-      currentTrack < playlist.length - 1 ? currentTrack + 1 : 0
+      currentTrack < musicList.length - 1 ? currentTrack + 1 : 0
     );
   };
   const handleEnd = () => {
     setCurrentTrack((currentTrack) =>
-      currentTrack < playlist.length - 1 ? currentTrack + 1 : 0
+      currentTrack < musicList.length - 1 ? currentTrack + 1 : 0
     );
   };
 
@@ -46,106 +43,108 @@ const Player = () => {
 
   return (
     <>
-      <motion.div
-        ref={playerContainer}
-        onClick={(e) => {
-          if (
-            // eslint-disable-next-line
-            e.target.tagName != "svg" &&
-            // eslint-disable-next-line
-            e.target.tagName != "path" &&
-            !e.target.classList.contains("rhap_progress-indicator") &&
-            !e.target.classList.contains("rhap_progress-container")
-          ) {
-            playerContainer?.current?.setAttribute(
-              "id",
-              fullPlayer ? "minified" : "maxified"
-            );
-            setFullPlayer(!fullPlayer);
-          }
-        }}
-        className={
-          fullPlayer
-            ? "dark:bg-secondary overflow-hidden fixed z-40 max-w-[425px] w-full bg-white top-[0px] "
-            : "dark:bg-secondary overflow-hidden fixed z-40 max-w-[425px] w-full bg-white bottom-[62px] "
-        }
-        id="minified"
-        variants={{
-          show: {
-            top: "0px",
-            bottom: "unset",
-            height: "100vh",
-          },
-          hidden: {
-            top: "unset",
-            bottom: "62px",
-            height: "89px",
-          },
-        }}
-        animate={fullPlayer ? "show" : "hidden"}
-        transition={{
-          duration: 0.5,
-        }}
-      >
-        {fullPlayer && (
-          <section className="w-full flex place-content-between items-center p-5">
-            <IoChevronBack
-              size="25px"
-              onClick={() => {
-                setFullPlayer(false);
-              }}
-              className="text-black dark:text-white"
-            />
-            <p className="uppercase text-lg tracking-widest dark:text-white">
-              Playing
-            </p>
-            <div className="w-[25px]"></div>
-          </section>
-        )}
-        {fullPlayer && (
-          <img
-            src="https://picsum.photos/250"
-            alt=""
-            className="mx-auto my-[75px] rounded-full"
-          />
-        )}
-
-        {fullPlayer && (
-          <h2 className="mx-auto my-6 max-w-max text-xl font-bold dark:text-white">
-            {song.title}
-          </h2>
-        )}
-        <p
+      {musicList && (
+        <motion.div
+          ref={playerContainer}
+          onClick={(e) => {
+            if (
+              // eslint-disable-next-line
+              e.target.tagName != "svg" &&
+              // eslint-disable-next-line
+              e.target.tagName != "path" &&
+              !e.target.classList.contains("rhap_progress-indicator") &&
+              !e.target.classList.contains("rhap_progress-container")
+            ) {
+              playerContainer?.current?.setAttribute(
+                "id",
+                fullPlayer ? "minified" : "maxified"
+              );
+              setFullPlayer(!fullPlayer);
+            }
+          }}
           className={
             fullPlayer
-              ? "mx-auto my-6 max-w-max dark:text-white"
-              : "mx-auto my-1 max-w-max dark:text-white"
+              ? "dark:bg-secondary overflow-hidden fixed z-40 max-w-[425px] w-full bg-white top-[0px] "
+              : "dark:bg-secondary overflow-hidden fixed z-40 max-w-[425px] w-full bg-white bottom-[62px] "
           }
+          id="minified"
+          variants={{
+            show: {
+              top: "0px",
+              bottom: "unset",
+              height: "100vh",
+            },
+            hidden: {
+              top: "unset",
+              bottom: "62px",
+              height: "89px",
+            },
+          }}
+          animate={fullPlayer ? "show" : "hidden"}
+          transition={{
+            duration: 0.5,
+          }}
         >
-          {fullPlayer && song.artist}
-        </p>
-        <AudioPlayer
-          src={playlist[currentTrack].src}
-          showSkipControls={fullPlayer}
-          onClickPrevious={handleClickPrev}
-          onClickNext={handleClickNext}
-          onEnded={handleEnd}
-          customProgressBarSection={[
-            RHAP_UI.CURRENT_TIME,
-            RHAP_UI.PROGRESS_BAR,
-            RHAP_UI.DURATION,
-          ]}
-          customControlsSection={[
-            <p className="minified_artist hidden dark:text-white">
-              {song.artist}
-            </p>,
-            RHAP_UI.MAIN_CONTROLS,
-            <p className="minified_songname hidden dark:text-white">
+          {fullPlayer && (
+            <section className="w-full flex place-content-between items-center p-5">
+              <IoChevronBack
+                size="25px"
+                onClick={() => {
+                  setFullPlayer(false);
+                }}
+                className="text-black dark:text-white"
+              />
+              <p className="uppercase text-lg tracking-widest dark:text-white">
+                Playing
+              </p>
+              <div className="w-[25px]"></div>
+            </section>
+          )}
+          {fullPlayer && (
+            <img
+              src="https://picsum.photos/250"
+              alt=""
+              className="mx-auto my-[75px] rounded-full"
+            />
+          )}
+
+          {fullPlayer && (
+            <h2 className="mx-auto my-6 max-w-max text-xl font-bold dark:text-white">
               {song.title}
-            </p>,
-          ]}
-        />
-      </motion.div>
+            </h2>
+          )}
+          <p
+            className={
+              fullPlayer
+                ? "mx-auto my-6 max-w-max dark:text-white"
+                : "mx-auto my-1 max-w-max dark:text-white"
+            }
+          >
+            {fullPlayer && song.artist}
+          </p>
+          <AudioPlayer
+            src={musicList[currentTrack]?.src}
+            showSkipControls={fullPlayer}
+            onClickPrevious={handleClickPrev}
+            onClickNext={handleClickNext}
+            onEnded={handleEnd}
+            customProgressBarSection={[
+              RHAP_UI.CURRENT_TIME,
+              RHAP_UI.PROGRESS_BAR,
+              RHAP_UI.DURATION,
+            ]}
+            customControlsSection={[
+              <p className="minified_artist hidden dark:text-white">
+                {song.artist}
+              </p>,
+              RHAP_UI.MAIN_CONTROLS,
+              <p className="minified_songname hidden dark:text-white">
+                {song.title}
+              </p>,
+            ]}
+          />
+        </motion.div>
+      )}
     </>
   );
 };
