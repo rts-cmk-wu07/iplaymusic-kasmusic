@@ -136,9 +136,13 @@ const Player = () => {
             RHAP_UI.DURATION,
           ]}
           customControlsSection={[
-            <p className="minified_artist hidden">{song.artist}</p>,
+            <p className="minified_artist hidden dark:text-white">
+              {song.artist}
+            </p>,
             RHAP_UI.MAIN_CONTROLS,
-            <p className="minified_songname hidden">{song.title}</p>,
+            <p className="minified_songname hidden dark:text-white">
+              {song.title}
+            </p>,
           ]}
         />
       </motion.div>
