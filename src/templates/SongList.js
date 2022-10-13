@@ -22,7 +22,7 @@ const SongList = ({ songs, children }) => {
         {songs &&
           songs.map((song) => {
             return (
-              <Album css="flex my-4 mx-5" key={song.track.name}>
+              <Album css="flex my-4 mx-5" key={song.id}>
                 <IoPlayCircle
                   className={"#EE0979"}
                   size="30px"

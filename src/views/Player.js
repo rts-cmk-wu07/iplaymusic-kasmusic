@@ -163,7 +163,7 @@ const Player = () => {
               </h2>
               {musicList.map((song, index) => {
                 return (
-                  <Album css="flex my-4 mx-5" key={song.track.name}>
+                  <Album css="flex my-4 mx-5" key={song.id}>
                     <IoPlayCircle
                       className={"#EE0979"}
                       size="30px"
@@ -184,12 +184,13 @@ const Player = () => {
                       className={"#EE0979 ml-2"}
                       size="15px"
                       onClick={() => {
-                        if (currentTrack >= index && currentTrack !== 0) {
+                        if (
+                          currentTrack > index ||
+                          (currentTrack === index && currentTrack !== 0)
+                        ) {
                           setCurrentTrack(currentTrack - 1);
                         }
                         musicList.splice(index, 1);
-                        console.log(musicList);
-                        console.log(index);
                       }}
                     />
                   </Album>
