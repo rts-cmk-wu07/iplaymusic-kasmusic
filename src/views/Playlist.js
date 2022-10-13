@@ -75,18 +75,21 @@ const Playlist = () => {
               <h2 className="dark:text-white">All Songs</h2>
             </div>
           </SongList>
-          <div className="flex place-content-center">
+          <div className="flex place-content-center mb-10">
             <Button
               css={"w-11/12 border-solid border-4 rounded-full border-primary"}
             >
               <p
                 className="font-xl text-primary tracking-widest uppercase mb-4 mt-4 font-bold"
                 onClick={() => {
+                  let allSongs = [];
                   playlistContent?.tracks?.items.map((song) => {
-                    return musicList
-                      ? setMusicList([...musicList, song.track])
-                      : setMusicList([song.track]);
+                    allSongs.push(song.track);
                   });
+                  musicList
+                    ? setMusicList([...musicList, ...allSongs])
+                    : setMusicList([...allSongs]);
+                  return;
                 }}
               >
                 listen all
