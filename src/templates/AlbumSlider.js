@@ -15,13 +15,15 @@ const AlbumSlider = () => {
           <ViewAll />
         </div>
         <div className="overflow-x-auto flex gap-5 max-w-max ml-7 ">
-          {content?.albums?.map((item, index) => {
+          {content?.albums?.map((item) => {
             return (
               <Album
                 key={item.id}
                 id={item.id}
                 album={item}
                 src={item?.images[0].url}
+                name={item.name}
+                total_tracks={item.total_tracks}
                 alt="test"
                 css="w-[130px] h-[130px] shrink-0 "
               ></Album>

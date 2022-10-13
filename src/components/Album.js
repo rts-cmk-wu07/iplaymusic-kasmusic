@@ -10,6 +10,9 @@ const Album = (props) => {
         navigate("/album?id=" + props.album.id, {
           state: {
             album: [album.tracks],
+            album_name: props.name,
+            total_tracks: props.total_tracks,
+            src: props.src,
           },
         });
       }}
