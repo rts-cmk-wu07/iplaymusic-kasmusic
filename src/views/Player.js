@@ -14,7 +14,7 @@ import "../react-player.css";
 import MusicList from "../context/MusicList";
 
 const Player = () => {
-  const { musicList } = useContext(MusicList);
+  const { musicList, setMusicList } = useContext(MusicList);
 
   const [fullPlayer, setFullPlayer] = useState(false);
 
@@ -161,41 +161,47 @@ const Player = () => {
               <h2 className="text-3xl dark:text-white m-auto w-fit">
                 Custom playlist
               </h2>
-              {musicList.map((song, index) => {
-                return (
-                  <Album css="flex my-4 mx-5" key={song.id}>
-                    <IoPlayCircle
-                      className={"#EE0979"}
-                      size="30px"
-                      onClick={() => {
-                        setCurrentTrack(index);
-                      }}
-                    />
-                    <div className="ml-5 mr-auto ">
-                      <h2 className="font-bold dark:text-white">{song.name}</h2>
-                      <p className="font-light dark:text-white">
-                        {song.artists[0].name}
-                      </p>
-                    </div>
-                    <p className="dark:text-white">
-                      {formatTime(song.duration_ms)}
-                    </p>
-                    <IoClose
-                      className={"#EE0979 ml-2"}
-                      size="15px"
-                      onClick={() => {
-                        if (
-                          currentTrack > index ||
-                          (currentTrack === index && currentTrack !== 0)
-                        ) {
-                          setCurrentTrack(currentTrack - 1);
-                        }
-                        musicList.splice(index, 1);
-                      }}
-                    />
-                  </Album>
-                );
-              })}
+              {musicList &&
+                musicList.map((song, index) => {
+                  return (
+                    musicList[index].id === song.id && (
+                      <Album css="flex my-4 mx-5" key={song.id}>
+                        <IoPlayCircle
+                          className={"#EE0979"}
+                          size="30px"
+                          onClick={() => {
+                            setCurrentTrack(index);
+                          }}
+                        />
+                        <div className="ml-5 mr-auto ">
+                          <h2 className="font-bold dark:text-white">
+                            {song.name}
+                          </h2>
+                          <p className="font-light dark:text-white">
+                            {song.artists[0].name}
+                          </p>
+                        </div>
+                        <p className="dark:text-white">
+                          {formatTime(song.duration_ms)}
+                        </p>
+                        <IoClose
+                          className={"#EE0979 ml-2"}
+                          size="15px"
+                          onClick={() => {
+                            if (
+                              currentTrack > index ||
+                              (currentTrack === index && currentTrack !== 0)
+                            ) {
+                              setCurrentTrack(currentTrack - 1);
+                            }
+                            musicList.splice(index, 1);
+                            setMusicList(musicList);
+                          }}
+                        />
+                      </Album>
+                    )
+                  );
+                })}
             </section>
           )}
         </motion.div>
