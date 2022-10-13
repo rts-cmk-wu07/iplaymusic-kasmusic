@@ -51,7 +51,7 @@ const Player = () => {
 
   return (
     <>
-      {musicList && (
+      {musicList && musicList[0] && (
         <motion.div
           ref={playerContainer}
           onClick={(e) => {
