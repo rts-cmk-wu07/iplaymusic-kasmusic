@@ -195,7 +195,7 @@ const Player = () => {
                               setCurrentTrack(currentTrack - 1);
                             }
                             musicList.splice(index, 1);
-                            setMusicList(musicList);
+                            setMusicList([...musicList]);
                           }}
                         />
                       </Album>
