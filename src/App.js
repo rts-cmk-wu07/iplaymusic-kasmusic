@@ -39,22 +39,12 @@ function App() {
   var [token, setToken] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(token);
   useEffect(() => {
     // eslint-disable-next-line
     if (token == null && location.pathname != "/login") {
       navigate("/login");
     }
   }, [token, location, navigate]);
-  // }, [token, location, navigate]);
-  //   if (
-  //     (!token && location.pathname !== "/login") ||
-  //     location.pathname !== "/callback"
-  //   ) {
-  //     navigate("/login");
-  //   }
-  //   // eslint-disable-next-line
-  // }, [location]);
 
   const [musicList, setMusicList] = useState(false);
 
