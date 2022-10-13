@@ -187,6 +187,7 @@ const Player = () => {
                         if (currentTrack >= index && currentTrack !== 0) {
                           setCurrentTrack(currentTrack - 1);
                         }
+                        musicList.splice(index, 1);
                         console.log(musicList);
                         console.log(index);
                       }}
