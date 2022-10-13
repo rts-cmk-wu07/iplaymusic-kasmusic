@@ -9,9 +9,11 @@ import { useContext } from "react";
 import axios from "axios";
 import TokenContext from "../context/TokenContext";
 import PageTransitions from "../animations/PageTransitions";
+import MusicList from "../context/MusicList";
 
 const Playlist = () => {
   const [token] = useContext(TokenContext);
+  const { musicList, setMusicList } = useContext(MusicList);
   const [playlistContent, setPlaylistContent] = useState([]);
   const [playlistIndex, setPlaylistIndex] = useState(0);
   const { content } = useFetch({ link: "browse/categories" });
@@ -36,7 +38,13 @@ const Playlist = () => {
               setPlaylistContent(response.data);
             });
         });
-  }, [setPlaylistContent, categories, playlistIndex]);
+  }, [setPlaylistContent, categories, playlistIndex, token]);
+
+  let playlistSongs = [];
+  playlistContent &&
+    playlistContent?.tracks?.items?.map((track) => {
+      playlistSongs.push(track.track);
+    });
   return (
     <>
       <PageTransitions>
@@ -47,7 +55,7 @@ const Playlist = () => {
           <PlaylistCarousel setPlaylistIndex={setPlaylistIndex}>
             {categories?.map((item) => {
               return (
-                <div className="ml-6 mr-6">
+                <div className="ml-6 mr-6" key={item.id}>
                   <Album>
                     <img
                       className="w-[155px] h-[155px]"
@@ -68,22 +76,28 @@ const Playlist = () => {
             {playlistContent && playlistContent.name}
           </h2>
 
-          <SongList
-            songs={
-              playlistContent &&
-              playlistContent.tracks &&
-              playlistContent.tracks.items
-            }
-          >
+          <SongList songs={playlistSongs}>
             <div className="flex place-content-between mx-5 mb-4">
               <h2 className="dark:text-white">All Songs</h2>
             </div>
           </SongList>
-          <div className="flex place-content-center">
+          <div className="flex place-content-center mb-10">
             <Button
               css={"w-11/12 border-solid border-4 rounded-full border-primary"}
             >
-              <p className="font-xl text-primary tracking-widest uppercase mb-4 mt-4 font-bold">
+              <p
+                className="font-xl text-primary tracking-widest uppercase mb-4 mt-4 font-bold"
+                onClick={() => {
+                  let allSongs = [];
+                  playlistContent?.tracks?.items.map((song) => {
+                    allSongs.push(song.track);
+                  });
+                  musicList
+                    ? setMusicList([...musicList, ...allSongs])
+                    : setMusicList([...allSongs]);
+                  return;
+                }}
+              >
                 listen all
               </p>
             </Button>

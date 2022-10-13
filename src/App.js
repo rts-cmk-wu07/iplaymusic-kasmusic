@@ -15,6 +15,7 @@ import DarkMode from "./context/DarkMode";
 import Callback from "./views/Callback";
 import TokenContext from "./context/TokenContext";
 import { AnimatePresence } from "framer-motion";
+import MusicList from "./context/MusicList";
 
 const Animated = () => {
   const location = useLocation();
@@ -55,27 +56,37 @@ function App() {
   //   // eslint-disable-next-line
   // }, [location]);
 
-  (darkMode && document.documentElement.classList.add("bg-secondary")) ||
-    document.documentElement.classList.add("bg-white");
+  const [musicList, setMusicList] = useState(false);
+
+  useEffect(() => {
+    document.documentElement.classList.remove("bg-white");
+    document.documentElement.classList.remove("bg-secondary");
+
+    darkMode
+      ? document.documentElement.classList.toggle("bg-secondary")
+      : document.documentElement.classList.add("bg-white");
+  }, [darkMode]);
 
   return (
     <TokenContext.Provider value={{ token, setToken }}>
-      <DarkMode.Provider value={{ darkMode, setDarkMode }}>
-        <div
-          className={
-            darkMode
-              ? "App dark dark:bg-secondary pb-10"
-              : "App dark:bg-secondary pb-10"
-          }
-        >
-          <div className={"dark:bg-secondary pb-10"}>
-            <Nav />
-            <TopMenu />
-            <Player />
-            <Animated />
+      <MusicList.Provider value={{ musicList, setMusicList }}>
+        <DarkMode.Provider value={{ darkMode, setDarkMode }}>
+          <div
+            className={
+              darkMode
+                ? "App dark dark:bg-secondary pb-10"
+                : "App dark:bg-secondary pb-10"
+            }
+          >
+            <div className={"dark:bg-secondary pb-10"}>
+              <Nav />
+              <TopMenu />
+              <Player />
+              <Animated />
+            </div>
           </div>
-        </div>
-      </DarkMode.Provider>
+        </DarkMode.Provider>
+      </MusicList.Provider>
     </TokenContext.Provider>
   );
 }

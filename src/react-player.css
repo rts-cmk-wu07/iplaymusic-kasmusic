@@ -69,7 +69,7 @@
   user-select: none;
   -webkit-user-select: none;
   grid-column-start: 1;
-  grid-column-end: 3;
+  grid-column-end: 4;
   grid-row-start: 1;
   grid-row-end: 2;
 }
@@ -208,6 +208,8 @@
   flex: 0 1 100px;
   user-select: none;
   -webkit-user-select: none;
+  grid-row-start: 2;
+  grid-row-end: 3;
 }
 
 .rhap_volume-bar-area {
@@ -284,7 +286,7 @@
 }
 
 #minified .rhap_progress-section {
-  display: flex;
+  display: grid;
 }
 
 #minified .rhap_time {
@@ -298,6 +300,9 @@
 #minified .minified_artist,
 #minified .minified_songname {
   display: block;
+  overflow: hidden;
+  width: 125px;
+  text-align: center;
 }
 
 #minified .rhap_controls-section {
