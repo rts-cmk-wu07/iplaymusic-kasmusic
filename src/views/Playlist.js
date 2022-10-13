@@ -9,10 +9,8 @@ import { useContext } from "react";
 import axios from "axios";
 import TokenContext from "../context/TokenContext";
 import PageTransitions from "../animations/PageTransitions";
-import MusicList from "../context/MusicList";
 
 const Playlist = () => {
-  const { setMusicList } = useContext(MusicList);
   const [token] = useContext(TokenContext);
   const [playlistContent, setPlaylistContent] = useState([]);
   const [playlistIndex, setPlaylistIndex] = useState(0);

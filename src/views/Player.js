@@ -7,8 +7,9 @@
 
 import { useContext, useRef, useState } from "react";
 import AudioPlayer, { RHAP_UI } from "react-h5-audio-player";
-import { IoChevronBack } from "react-icons/io5";
+import { IoChevronBack, IoClose, IoPlayCircle } from "react-icons/io5";
 import { motion } from "framer-motion";
+import Album from "../components/Album";
 import "../react-player.css";
 import MusicList from "../context/MusicList";
 
@@ -36,6 +37,18 @@ const Player = () => {
 
   let playerContainer = useRef();
 
+  const formatTime = (milliseconds) => {
+    const seconds = Math.floor((milliseconds / 1000) % 60);
+    const minutes = Math.floor((milliseconds / 1000 / 60) % 60);
+
+    return [
+      minutes.toString().padStart(2, "0"),
+      seconds.toString().padStart(2, "0"),
+    ].join(":");
+  };
+
+  console.log(musicList);
+
   return (
     <>
       {musicList && (
@@ -62,8 +75,8 @@ const Player = () => {
           }}
           className={
             fullPlayer
-              ? "dark:bg-secondary overflow-hidden fixed z-40 max-w-[425px] w-full bg-white top-[0px] "
-              : "dark:bg-secondary overflow-hidden fixed z-40 max-w-[425px] w-full bg-white bottom-[62px] "
+              ? "dark:bg-secondary overflow-scroll fixed z-40 max-w-[425px] w-full bg-white top-[0px] "
+              : "dark:bg-secondary fixed z-40 max-w-[425px] w-full bg-white bottom-[62px] "
           }
           id="minified"
           variants={{
@@ -143,6 +156,46 @@ const Player = () => {
               </p>,
             ]}
           />
+          {fullPlayer && musicList && (
+            <section>
+              <h2 className="text-3xl dark:text-white m-auto w-fit">
+                Custom playlist
+              </h2>
+              {musicList.map((song, index) => {
+                return (
+                  <Album css="flex my-4 mx-5" key={song.track.name}>
+                    <IoPlayCircle
+                      className={"#EE0979"}
+                      size="30px"
+                      onClick={() => {
+                        setCurrentTrack(index);
+                      }}
+                    />
+                    <div className="ml-5 mr-auto ">
+                      <h2 className="font-bold dark:text-white">{song.name}</h2>
+                      <p className="font-light dark:text-white">
+                        {song.artists[0].name}
+                      </p>
+                    </div>
+                    <p className="dark:text-white">
+                      {formatTime(song.duration_ms)}
+                    </p>
+                    <IoClose
+                      className={"#EE0979 ml-2"}
+                      size="15px"
+                      onClick={() => {
+                        if (currentTrack >= index && currentTrack !== 0) {
+                          setCurrentTrack(currentTrack - 1);
+                        }
+                        console.log(musicList);
+                        console.log(index);
+                      }}
+                    />
+                  </Album>
+                );
+              })}
+            </section>
+          )}
         </motion.div>
       )}
     </>
