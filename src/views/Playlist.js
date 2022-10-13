@@ -39,6 +39,12 @@ const Playlist = () => {
             });
         });
   }, [setPlaylistContent, categories, playlistIndex, token]);
+
+  let playlistSongs = [];
+  playlistContent &&
+    playlistContent?.tracks?.items?.map((track) => {
+      playlistSongs.push(track.track);
+    });
   return (
     <>
       <PageTransitions>
@@ -70,7 +76,7 @@ const Playlist = () => {
             {playlistContent && playlistContent.name}
           </h2>
 
-          <SongList songs={playlistContent?.tracks?.items}>
+          <SongList songs={playlistSongs}>
             <div className="flex place-content-between mx-5 mb-4">
               <h2 className="dark:text-white">All Songs</h2>
             </div>

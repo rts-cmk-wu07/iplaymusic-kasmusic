@@ -22,26 +22,26 @@ const SongList = ({ songs, children }) => {
         {songs &&
           songs.map((song) => {
             return (
-              <Album css="flex my-4 mx-5" key={song.id}>
+              <Album css="flex my-4 mx-5" key={song?.id}>
                 <IoPlayCircle
                   className={"#EE0979"}
                   size="30px"
                   onClick={() => {
                     musicList
-                      ? setMusicList([...musicList, song.track])
-                      : setMusicList([song.track]);
+                      ? setMusicList([...musicList, song])
+                      : setMusicList([song]);
                   }}
                 />
                 <div className="ml-5 mr-auto ">
                   <h2 className="font-bold dark:text-white">
-                    {song.track.name}
+                    {song && song?.name}
                   </h2>
                   <p className="font-light dark:text-white">
-                    {song.track.album.artists[0].name}
+                    {song && song?.album?.artists[0].name}
                   </p>
                 </div>
                 <p className="dark:text-white">
-                  {formatTime(song.track.duration_ms)}
+                  {formatTime(song && song?.duration_ms)}
                 </p>
               </Album>
             );

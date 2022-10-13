@@ -11,7 +11,6 @@ const FeaturedSlideIn = ({ children }) => {
   const featuredSlideIn = useAnimation();
 
   useEffect(() => {
-    console.log("my inview is", isInView);
     if (isInView) {
       featuredSlideIn.start({
         x: 0,

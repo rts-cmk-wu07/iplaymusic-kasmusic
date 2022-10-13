@@ -47,8 +47,6 @@ const Player = () => {
     ].join(":");
   };
 
-  console.log(musicList);
-
   return (
     <>
       {musicList && musicList[0] && (
