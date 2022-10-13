@@ -12,7 +12,7 @@ import PageTransitions from "../animations/PageTransitions";
 import MusicList from "../context/MusicList";
 
 const Playlist = () => {
-  const [token] = useContext(TokenContext);
+  const { token } = useContext(TokenContext);
   const { musicList, setMusicList } = useContext(MusicList);
   const [playlistContent, setPlaylistContent] = useState([]);
   const [playlistIndex, setPlaylistIndex] = useState(0);
