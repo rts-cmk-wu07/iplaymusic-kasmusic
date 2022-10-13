@@ -48,7 +48,10 @@ const Player = () => {
               // eslint-disable-next-line
               e.target.tagName != "path" &&
               !e.target.classList.contains("rhap_progress-indicator") &&
-              !e.target.classList.contains("rhap_progress-container")
+              !e.target.classList.contains("rhap_progress-container") &&
+              !e.target.classList.contains("rhap_volume-indicator") &&
+              !e.target.classList.contains("rhap_volume-bar-area") &&
+              !e.target.classList.contains("rhap_volume-bar")
             ) {
               playerContainer?.current?.setAttribute(
                 "id",
@@ -72,7 +75,7 @@ const Player = () => {
             hidden: {
               top: "unset",
               bottom: "62px",
-              height: "89px",
+              height: "105px",
             },
           }}
           animate={fullPlayer ? "show" : "hidden"}
@@ -118,7 +121,8 @@ const Player = () => {
             {fullPlayer && musicList[currentTrack]?.artists[0].name}
           </p>
           <AudioPlayer
-            src={musicList[currentTrack]?.uri}
+            src={musicList[currentTrack]?.preview_url}
+            volume={0.5}
             showSkipControls={fullPlayer}
             onClickPrevious={handleClickPrev}
             onClickNext={handleClickNext}
@@ -126,6 +130,7 @@ const Player = () => {
             customProgressBarSection={[
               RHAP_UI.CURRENT_TIME,
               RHAP_UI.PROGRESS_BAR,
+              RHAP_UI.VOLUME,
               RHAP_UI.DURATION,
             ]}
             customControlsSection={[
