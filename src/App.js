@@ -3,7 +3,7 @@ import Nav from "./templates/Nav";
 import TopMenu from "./templates/TopMenu";
 import Albums from "./views/Albums";
 import Featured from "./views/Featured";
-import { Routes, Route, useLocation, Switch } from "react-router-dom";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import Album from "./views/Album";
 import Categories from "./views/Categories";
 import Playlist from "./views/Playlist";
@@ -35,13 +35,31 @@ const Animated = () => {
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
-  var tokenState = useState(null);
+  var [token, setToken] = useState(null);
+  const location = useLocation();
+  const navigate = useNavigate();
+  console.log(token);
+  useEffect(() => {
+    // eslint-disable-next-line
+    if (token == null && location.pathname != "/login") {
+      navigate("/login");
+    }
+  }, [token, location, navigate]);
+  // }, [token, location, navigate]);
+  //   if (
+  //     (!token && location.pathname !== "/login") ||
+  //     location.pathname !== "/callback"
+  //   ) {
+  //     navigate("/login");
+  //   }
+  //   // eslint-disable-next-line
+  // }, [location]);
 
   (darkMode && document.documentElement.classList.add("bg-secondary")) ||
     document.documentElement.classList.add("bg-white");
 
   return (
-    <TokenContext.Provider value={tokenState}>
+    <TokenContext.Provider value={{ token, setToken }}>
       <DarkMode.Provider value={{ darkMode, setDarkMode }}>
         <div
           className={
