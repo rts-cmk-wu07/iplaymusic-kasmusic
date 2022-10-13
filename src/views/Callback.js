@@ -4,7 +4,7 @@ import { Navigate } from "react-router-dom";
 import TokenContext from "../context/TokenContext";
 
 const Callback = () => {
-  var [token, setToken] = useContext(TokenContext);
+  var { token, setToken } = useContext(TokenContext);
   const code = new URL(document.location).searchParams.get("code");
 
   useEffect(

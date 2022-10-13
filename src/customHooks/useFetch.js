@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import TokenContext from "../context/TokenContext";
 
 const useFetch = ({ link }) => {
-  const [token] = useContext(TokenContext);
+  const { token } = useContext(TokenContext);
   const [content, setContent] = useState([]);
 
   useEffect(() => {
